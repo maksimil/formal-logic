@@ -1,0 +1,48 @@
+\documentclass[titlepage, nofonts, nobib]{tufte-handout}
+
+% language
+\usepackage[T2A, T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[russian]{babel}
+
+% page styling
+% \usepackage{parskip}
+\usepackage{enumitem}
+% \usepackage{showframe}
+\usepackage{multicol}
+
+% \makeatletter
+% \raggedright
+% \setlength{\parskip}{\medskipamount}
+% \newcommand{\@minipagerestore}{\setlength{\parskip}{\medskipamount}\raggedright}
+% \makeatother
+
+% math
+\usepackage{amsmath, amsfonts, amssymb}
+\usepackage{amsthm}
+\usepackage{fitch}
+\usepackage{caption,subcaption}
+
+% titling
+\title{Математическая\\ логика}
+\author{Ксения К.}
+
+% document
+\begin{document}
+
+\maketitle
+
+\setcounter{tocdepth}{1}
+\tableofcontents
+
+\pagebreak
+\input{chapters/chapter_1.tex}
+
+\pagebreak
+\input{chapters/chapter_2.tex}
+\input{chapters/chapter_3.tex}
+
+\pagebreak
+\input{chapters/chapter_4.tex}
+
+\end{document}
