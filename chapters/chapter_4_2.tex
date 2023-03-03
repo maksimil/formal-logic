@@ -1,0 +1,391 @@
+\section{Правила вывода}
+
+\newcommand\figsep{0cm}
+\begin{marginfigure}
+	\[
+		\begin{nd}
+			\have{1}{B}
+			\have{2}{A}
+			\have{3}{A\land B} \ai{1,2}
+		\end{nd}
+	\]
+
+	\caption{Пример использования правила $A,B\vdash A\land B$.}\label{fig:ex_ai}
+\end{marginfigure}
+
+\begin{marginfigure}[\figsep]
+	\[
+		\begin{nd}
+			\open
+			\hypo{1}{A}
+			\have{}{...}
+			\have{2}{C}
+			\close
+			\have{}{A\implies C}\ii{1-2}
+		\end{nd}
+	\]
+
+	\caption{Пример использования правила ${[A\vdash C]\vdash (A\implies C)}$.}
+	\label{fig:ex_ii}
+\end{marginfigure}
+
+\begin{marginfigure}[\figsep]
+	\[
+		\begin{nd}
+			\have{1}{\exists x:P(x)}
+			\open[u]
+			\hypo{2}{P(u)}
+			\have{}{...}
+			\have{3}{C}
+			\close
+			\have{4}{C}\Ee{1,2-3}
+		\end{nd}
+	\]
+
+	\caption{Пример использования правила ${[\exists x:P(x)],[u;P(u)\vdash C]\vdash C}$.}
+	\label{fig:ex_Ee}
+\end{marginfigure}
+
+\begin{marginfigure}[\figsep]
+	\[
+		\begin{nd}
+			\have{1}{S}	\by{AI}{}
+		\end{nd}
+	\]
+
+	\caption{Пример использования правила $\vdash S$, где $S$ --- аксиома.}
+	\label{fig:ex_xi}
+\end{marginfigure}
+
+Начнём построение формальной системы. Алфавит уже определён, но также введём
+в него способ построения диаграм.
+
+Если $A$, $B$ --- формулы, $\gamma$ --- переменная,
+а $K$ --- квантор, то выражения ${A\implies B}$, $A\land B$, $A\lor B$, $\lnot A$,
+$K\gamma A$, $A=B$ --- формулы.
+Диаграммы Фитча и $\bot$ тоже формулы.
+
+Правило вывода: $A\vdash T$, если можно построить диаграмму,
+предполагающую $A$ и заключающую $T$.
+
+Пусть $\mathcal A$ --- совокупность формул. Если $\mathcal A$ находится
+в одной области видимости и $\mathcal A\vdash B$,
+то можно добавить строку $B$ в эту область видимости.
+Если $T$ выводимо без предположений
+(обозначается как $\vdash T$),
+то в диаграмму можно добавить строку $T$ в произвольную область видимости.
+
+Введём правила вывода.
+Для символов будут введены правила введения и исключения.
+При использовании правил справа пишется
+название правила и какие строки использованы. Для краткости обозначим с помощью
+$[A\vdash B]$ диаграмму из $A$ в $B$ (рис.~\ref{fig:ex_ii}),
+а с помощью ${[t;A\vdash B]}$ ---
+диаграмму из $A$ в $B$, вводящее переменную $t$ (рис.~\ref{fig:ex_Ee}).
+Мы можем использовать $\vdash$, чтобы обозначить выводимость и
+существование диаграммы, потому что в данной формальной ситеме это взаимозаменяемые
+понятия.
+
+Ниже предоставлен полный список правил. Примеры их использования
+можно увидеть на рис.~\ref{fig:ex_ai},\ref{fig:ex_ii},\ref{fig:ex_Ee},\ref{fig:ex_xi}.
+
+\hspace{-0.7cm}
+\begin{tabular}{rl|rl}
+	($\Rightarrow$I) & $[A\vdash B]\vdash (A\implies B)$           &
+	($\Rightarrow$E) & $A,(A\implies B)\vdash B$                     \\
+	($\land$I)       & $A,B\vdash A\land B$                        &
+	($\land$E)       & $A\land B\vdash A$ или $A\land B\vdash B$     \\
+	($\lor$I)        & $A\vdash A\lor B$ или $B\vdash A\lor B$     &
+	($\lor$E)        & $[A\lor B],[A\vdash C],[B\vdash C]\vdash C$   \\
+	($\lnot$I)       & $[A\vdash\bot]\vdash \lnot A$               &
+	($\lnot$E)       & $[\lnot A\vdash\bot]\vdash A$                 \\
+	($\bot$I)        & $A,\lnot A\vdash \bot$                      &
+	($\bot$E)        & $\bot\vdash A$                                \\
+	($\forall$I)     & $[t;\vdash P(t)]\vdash (\forall x)P(x)$     &
+	($\forall$E)     & $(\forall x)P(x)\vdash P(t)$                  \\
+	($\exists$I)     & $P(t)\vdash [\exists x:P(x)]$               &
+	($\exists$E)     & $[\exists x:P(x)],[t;P(t)\vdash C]\vdash C$   \\
+	($=$I)           & $\vdash V=V$                                &
+	($=$E)           & $[u=v],P(u)\vdash P(v)$                       \\
+	(AI)             & $\vdash S$                                  &
+	                 & или $[u=v], P(v)\vdash P(u)$                  \\
+\end{tabular}
+
+\newcommand\bi[1]{\by{$\bot$I}{#1}}
+где $A$, $B$ --- формулы, $P(x)$ --- шаблон формулы\footnote{
+	То есть $P(y)$ --- та же формула $P(x)$, но вместо всех $x$ стоят $y$.
+}, $S$ --- аксиома,
+$t$, $u$, $v$ --- переменные, $V$ --- такое выражение, что $V=V$ --- формула.
+Под ``или'' имеется в виду, что одним символом обозначаются
+два правила.
+В качестве примера докажем правило R: $A\vdash A$ и применим его
+для доказательства $A\vdash (B\implies A)$.
+\[
+	\begin{array}{l|l}
+		\begin{nd}
+			\hypo{1}{A}
+			\open
+			\hypo{2}{\lnot A}
+			\have{3}{\bot}\bi{1,2}
+			\close
+			\have{4}{A}\ne{2-3}
+		\end{nd} &
+		\begin{nd}
+			\hypo{1}{A}
+			\open
+			\hypo{2}{B}
+			\have{3}{A}\r{1}
+			\close
+			\have{4}{B\implies A}\ii{2-3}
+		\end{nd}
+	\end{array}
+\]
+
+Для проверки
+достаточно проверить, правильно ли применены правила в каждой строке.
+
+Докажем закон исключённого третьего (EM): $\vdash A\lor \lnot A$.
+\[
+	\begin{nd}
+		\hypo{}{\qquad\qquad}
+		\open
+		\hypo{1}{\lnot(A\lor\lnot A)}
+		\open
+		\hypo{2}{A}
+		\have{3}{A\lor \lnot A}\oi{2}
+		\have{4}{\bot}\bi{1,3}
+		\close
+		\have{5}{\lnot A}\ni{2-4}
+		\have{6}{A\lor\lnot A}\oi{5}
+		\have{7}{\bot}\bi{1,6}
+		\close
+		\have{8}{A\lor\lnot A}\ne{1-7}
+	\end{nd}
+\]
+
+Пусть $\top:=\lnot\bot$. Для завершения построения формальной системы
+введём аксиому: $\top$. Если $\vdash T$, то и $\top\vdash T$,
+тогда $T$ --- теорема. Заметим также, что благодаря правилу AI для всякой
+теоремы $T$ справедливо $\vdash T$.
+
+Докажем
+$(\forall x)P(x)\vdash\lnot[\exists x:\lnot P(x)]$\footnote{Вспомните
+	первое доказательство в этой книге и сравните словесные рассуждения с
+	диаграммой Фитча.
+
+	Из диаграммы можно получить и сами словесные рассуждения:
+	\begin{enumerate}[label=(\arabic*)]
+		\item{}Предположим $(\forall x)P(x)$.\label{enum:1}
+		\item{}Предположим $\exists x:\lnot P(x)$.\label{enum:2}
+		\item{}Для произвольного $t$ предположим $\lnot P(t)$.\label{enum:3}
+		\item{}По $\forall$E, \ref{enum:1}: $P(t)$.\label{enum:4}
+		\item{}По $\bot$I, \ref{enum:3} и \ref{enum:4}: $\bot$.\label{enum:5}
+		\item{}По $\exists$E, \ref{enum:2}, \ref{enum:3}-\ref{enum:5}: $\bot$.\label{enum:6}
+		\item{}По $\lnot$I, \ref{enum:2}-\ref{enum:6}: $\lnot[\exists x:\lnot P(x)]$.\qed
+	\end{enumerate}
+
+	Их можно привести к более человеческому виду и получить доказательство на
+	с.~\pageref{wordproof}.
+}.
+\[
+	\begin{nd}
+		\hypo{1}{(\forall x)P(x)}
+		\open
+		\hypo{2}{\exists x:\lnot P(x)}
+		\open[t]
+		\hypo{3}{\lnot P(t)}
+		\have{4}{P(t)}\Ae{1}
+		\have{5}{\bot}\bi{3,4}
+		\close
+		\have{6}{\bot}\Ee{2,3-5}
+		\close
+		\have{7}{\lnot[\exists x:\lnot P(x)]}\ni{2-6}
+	\end{nd}
+\]
+
+{\it Упражнения:}
+\begin{enumerate}
+	\item{}Обосновать словесно правила вывода. Почему такая система называется
+	естественной дедукцией?
+	\item{}Какие утверждения будут теоремами, если $\bot$ --- аксиома?
+	\item{}Определить области видимости для формул $A$, $\lnot A$, $A\lor\lnot A$
+	и $\lnot(A\lor\lnot A)$ в доказательстве $\vdash A\lor\lnot A$.
+	\item{}*Доказать $\bot$E, используя остальные правила.
+	\pagebreak
+	\item{}*Доказать правила:
+	\begin{multicols}{2}
+		\begin{enumerate}
+			\item[($\lnot\land$)]{}$\lnot(A\land B)\vdash \lnot A\lor \lnot B$
+			\item[($\lnot\lor$)]{}$\lnot(A\lor B)\vdash \lnot A\land \lnot B$
+			\item[($\land\lnot$)]{}$\lnot A\land\lnot B\vdash \lnot(A\lor B)$
+			\item[($\lor\lnot$)]{}$\lnot A\lor\lnot B\vdash \lnot(A\land B)$
+			\item[($\lnot\forall$)]{}$\lnot[(\forall x)P(x)]\vdash\exists x:\lnot P(x)$
+			\item[($\lnot\exists$)]{}$\lnot[\exists x:P(x)]\vdash (\forall x)\lnot P(x)$
+			\item[($\forall\lnot$)]{}$(\forall x)\lnot P(x)\vdash \lnot[\exists x:P(x)]$
+			\item[($\exists\lnot$)]{}$\exists x:\lnot P(x)\vdash \lnot[(\forall x)P(x)]$
+		\end{enumerate}
+	\end{multicols}
+\end{enumerate}
+
+{\it Решение упражнения 5:}
+\[
+	\begin{array}{l|l}
+		\lnot(A\land B)\vdash \lnot A\lor\lnot B      &
+		\lnot(A\lor B)\vdash \lnot A\land \lnot B       \\
+		\begin{nd}
+			\hypo{1}{\lnot(A\land B)}
+			\have{2}{A\lor \lnot A}\by{EM}{}
+			\open
+			\hypo{3}{\lnot A}
+			\have{4}{\lnot A\lor\lnot B}\oi{3}
+			\close
+			\open
+			\hypo{5}{A}
+			\open
+			\hypo{6}{B}
+			\have{7}{A\land B}\ai{5,6}
+			\have{8}{\bot}\bi{1,7}
+			\close
+			\have{9}{\lnot B}\ni{6-8}
+			\have{10}{\lnot A\lor \lnot B}\oi{9}
+			\close
+			\have{11}{\lnot A\lor \lnot B}\oe{2,3-4,5-10}
+		\end{nd} &
+		\begin{nd}
+			\hypo{1}{\lnot(A\lor B)}
+			\open
+			\hypo{2}{A}
+			\have{3}{A\lor B}\oi{2}
+			\have{4}{\bot}\bi{1,3}
+			\close
+			\have{5}{\lnot A}\ni{2-4}
+			\open
+			\hypo{6}{B}
+			\have{7}{A\lor B}\oi{6}
+			\have{8}{\bot}\bi{1,7}
+			\close
+			\have{9}{\lnot B}\ni{6-8}
+			\have{10}{\lnot A\land \lnot B}\ai{5,9}
+		\end{nd}          \\\hline
+		\lnot A\land\lnot B\vdash \lnot(A\lor B)      &
+		\lnot A\lor\lnot B\vdash \lnot(A\land B)        \\
+		\begin{nd}
+			\hypo{1}{\lnot A\land\lnot B}
+			\open
+			\hypo{2}{A\lor B}
+			\open
+			\hypo{3}{A}
+			\have{4}{\lnot A}\ae{1}
+			\have{5}{\bot}\bi{3,4}
+			\close
+			\open
+			\hypo{6}{B}
+			\have{7}{\lnot B}\ae{1}
+			\have{8}{\bot}\bi{6,7}
+			\close
+			\have{9}{\bot}\oe{2,3-5,6-8}
+			\close
+			\have{10}{\lnot(A\lor B)}\ni{2-9}
+		\end{nd}             &
+		\begin{nd}
+			\hypo{1}{\lnot A\lor\lnot B}
+			\open
+			\hypo{2}{A\land B}
+			\open
+			\hypo{3}{\lnot A}
+			\have{4}{A}\ae{2}
+			\have{5}{\bot}\bi{3,4}
+			\close
+			\open
+			\hypo{6}{\lnot B}
+			\have{7}{B}\ae{2}
+			\have{8}{\bot}\bi{6,7}
+			\close
+			\have{9}{\bot}\oe{1,3-5,6-8}
+			\close
+			\have{10}{\lnot (A\land B)}\ni{2-9}
+		\end{nd}
+	\end{array}
+\]
+\[
+	\begin{array}{l|l}
+		\lnot[(\forall x)P(x)]\vdash \exists x:\lnot P(x) &
+		\lnot[\exists x:P(x)]\vdash (\forall x)\lnot P(x)   \\
+		\begin{nd}
+			\hypo{1}{\lnot[(\forall x)P(x)]}
+			\open
+			\hypo{2}{\lnot[\exists x:\lnot P(x)]}
+			\open[t]
+			\hypo{3}{}
+			\open
+			\hypo{7}{\lnot P(t)}
+			\have{8}{\exists x:\lnot P(x)}\Ei{7}
+			\have{9}{\bot}\bi{2,8}
+			\close
+			\have{11}{P(t)}\ne{7-9}
+			\close
+			\have{12}{(\forall x)P(x)}\Ai{3-11}
+			\have{13}{\bot}\bi{1,12}
+			\close
+			\have{14}{\exists x:\lnot P(x)}\ne{2-13}
+		\end{nd}          &
+		\begin{nd}
+			\hypo{1}{\lnot[\exists x:P(x)]}
+			\open[t]
+			\hypo{2}{}
+			\open
+			\hypo{3}{P(t)}
+			\have{4}{\exists x:P(x)}\Ei{3}
+			\have{5}{\bot}\bi{1,4}
+			\close
+			\have{6}{\lnot P(t)}\ni{3-5}
+			\close
+			\have{6}{(\forall x)\lnot P(x)}\Ai{2-6}
+		\end{nd}              \\\hline
+		(\forall x)\lnot P(x)\vdash \lnot[\exists x:P(x)] &
+		\exists x:\lnot P(x)\vdash \lnot[(\forall x)P(x)]   \\
+		\begin{nd}
+			\hypo{1}{(\forall x)\lnot P(x)}
+			\open
+			\hypo{2}{\exists x:P(x)}
+			\open[t]
+			\hypo{3}{P(t)}
+			\have{4}{\lnot P(t)}\Ae{1}
+			\have{5}{\bot}\ni{3,4}
+			\close
+			\have{6}{\bot}\Ee{2,3-5}
+			\close
+			\have{7}{\lnot[\exists x:P(x)]}\ni{2-6}
+		\end{nd}         &
+		\begin{nd}
+			\hypo{1}{\exists x:\lnot P(x)}
+			\open
+			\hypo{2}{(\forall x)P(x)}
+			\open[t]
+			\hypo{3}{\lnot P(t)}
+			\have{4}{P(t)}\Ae{2}
+			\have{5}{\bot}\bi{3,4}
+			\close
+			\have{6}{\bot}\Ee{1,3-5}
+			\close
+			\have{7}{\lnot[(\forall x)P(x)]}\ni{2-6}
+		\end{nd}
+	\end{array}
+\]
+
+{\it Решение упражнения 4:}
+\[
+	\begin{array}{l}
+		\bot\vdash A \\
+		\begin{nd}
+			\hypo{1}{\bot}
+			\open
+			\hypo{2}{\lnot A}
+			\have{3}{\bot}\r{1}
+			\close
+			\have{4}{A}\ne{2-3}
+		\end{nd}
+	\end{array}
+\]
+
+\pagebreak
