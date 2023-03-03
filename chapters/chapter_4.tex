@@ -97,8 +97,8 @@ $A$ и $A'$ находятся в одной области видимости -
 \begin{marginfigure}
 	\[
 		\begin{nd}
-			\have{1}{A}
-			\have{2}{B}
+			\have{1}{B}
+			\have{2}{A}
 			\have{3}{A\land B} \ai{1,2}
 		\end{nd}
 	\]
@@ -182,34 +182,33 @@ $[A\vdash B]$ диаграмму из $A$ в $B$ (рис.~\ref{fig:ex_ii}),
 Ниже предоставлен полный список правил. Примеры их использования
 можно увидеть на рис.~\ref{fig:ex_ai},\ref{fig:ex_ii},\ref{fig:ex_Ee},\ref{fig:ex_xi}.
 
-\begin{table}
-	\begin{tabular}{rl|rl}
-		($\Rightarrow$I) & $[A\vdash B]\vdash (A\implies B)$           &
-		($\Rightarrow$E) & $A,(A\implies B)\vdash B$                     \\
-		($\land$I)       & $A,B\vdash A\land B$                        &
-		($\land$E)       & $A\land B\vdash A$ или $A\land B\vdash B$     \\
-		($\lor$I)        & $A\vdash A\lor B$ или $B\vdash A\lor B$     &
-		($\lor$E)        & $[A\lor B],[A\vdash C],[B\vdash C]\vdash C$   \\
-		($\lnot$I)       & $[A\vdash\bot]\vdash \lnot A$               &
-		($\lnot$E)       & $[\lnot A\vdash\bot]\vdash A$                 \\
-		($\bot$I)        & $A,\lnot A\vdash \bot$                      &
-		($\bot$E)        & $\bot\vdash A$                                \\
-		($\forall$I)     & $[t;\vdash P(t)]\vdash (\forall x)P(x)$     &
-		($\forall$E)     & $(\forall x)P(x)\vdash P(t)$                  \\
-		($\exists$I)     & $P(t)\vdash [\exists x:P(x)]$               &
-		($\exists$E)     & $[\exists x:P(x)],[t;P(t)\vdash C]\vdash C$   \\
-		($=$I)           & $\vdash t=t$                                &
-		($=$E)           & $[u=v],P(u)\vdash P(v)$                       \\
-		(AI)             & $\vdash S$                                  &
-		                 & или $[u=v], P(v)\vdash P(u)$                  \\
-	\end{tabular}
-\end{table}
+\hspace{-0.7cm}
+\begin{tabular}{rl|rl}
+	($\Rightarrow$I) & $[A\vdash B]\vdash (A\implies B)$           &
+	($\Rightarrow$E) & $A,(A\implies B)\vdash B$                     \\
+	($\land$I)       & $A,B\vdash A\land B$                        &
+	($\land$E)       & $A\land B\vdash A$ или $A\land B\vdash B$     \\
+	($\lor$I)        & $A\vdash A\lor B$ или $B\vdash A\lor B$     &
+	($\lor$E)        & $[A\lor B],[A\vdash C],[B\vdash C]\vdash C$   \\
+	($\lnot$I)       & $[A\vdash\bot]\vdash \lnot A$               &
+	($\lnot$E)       & $[\lnot A\vdash\bot]\vdash A$                 \\
+	($\bot$I)        & $A,\lnot A\vdash \bot$                      &
+	($\bot$E)        & $\bot\vdash A$                                \\
+	($\forall$I)     & $[t;\vdash P(t)]\vdash (\forall x)P(x)$     &
+	($\forall$E)     & $(\forall x)P(x)\vdash P(t)$                  \\
+	($\exists$I)     & $P(t)\vdash [\exists x:P(x)]$               &
+	($\exists$E)     & $[\exists x:P(x)],[t;P(t)\vdash C]\vdash C$   \\
+	($=$I)           & $\vdash V=V$                                &
+	($=$E)           & $[u=v],P(u)\vdash P(v)$                       \\
+	(AI)             & $\vdash S$                                  &
+	                 & или $[u=v], P(v)\vdash P(u)$                  \\
+\end{tabular}
 
 \newcommand\bi[1]{\by{$\bot$I}{#1}}
 где $A$, $B$ --- формулы, $P(x)$ --- шаблон формулы\footnote{
 	То есть $P(y)$ --- та же формула $P(x)$, но вместо всех $x$ стоят $y$.
 }, $S$ --- аксиома,
-$t$, $u$, $v$ --- переменные.
+$t$, $u$, $v$ --- переменные, $V$ --- такое выражение, что $V=V$ --- формула.
 Под ``или'' имеется в виду, что одним символом обозначаются
 два правила.
 В качестве примера докажем правило R: $A\vdash A$ и применим его
@@ -495,13 +494,15 @@ $(\forall x)P(x)\vdash\lnot[\exists x:\lnot P(x)]$\footnote{Вспомните
 	Новые обозначения обычно вводятся аксиомами.
 }.
 Из определения выводимы правила:
-\begin{table}
-	\begin{tabular}{rl}
-		($\ruleEquiv_1$) & $(A\iff B)\dashv~\vdash
-		(A\implies B)\land (B\implies A)$                                \\
-		($\ruleEquiv_2$) & $[A\implies B],[B\implies A]\vdash (A\iff B)$
-	\end{tabular}
-\end{table}
+
+\hspace{-0.7cm}
+\begin{tabular}{rl|rl}
+	($\ruleEquiv_1$)                  & $(A\iff B)\dashv~\vdash
+	(A\implies B)\land (B\implies A)$ &
+	($\ruleEquiv_3$)                  & $[A\iff B],B\vdash A$	\\
+	($\ruleEquiv_2$)                  & $[A\implies B],[B\implies A]\vdash (A\iff B)$ &
+																		& или $[A\iff B], A\vdash B$
+\end{tabular}
 
 где $A\dashv~\vdash B$ означает $A\vdash B$ и $B\vdash A$.
 
@@ -581,8 +582,8 @@ $(\forall x)P(x)\vdash\lnot[\exists x:\lnot P(x)]$\footnote{Вспомните
 
 Введём новый символ --- $\in$. ${x\in S}$ означает, что $x$ лежит в множестве $S$.
 Отметим, что такие словесные интерпретации выражений не обязательны и не имеют
-значения для формальной системы. Для неё это просто строки, которые можно преобразовывать
-по определённым правилам.
+значения для формальной системы. Для неё формулы это просто строки,
+которые можно преобразовывать по определённым правилам.
 
 До этого мы обращались только с одним {\it родом} переменных --- формулой.
 То есть всякая переменная обозначала формулу, но теперь мы вводим новый род
@@ -594,7 +595,7 @@ $(\forall x)P(x)\vdash\lnot[\exists x:\lnot P(x)]$\footnote{Вспомните
 то $\gamma\in S$ --- формула. Если $\alpha$ и $\beta$ --- переменные одного рода,
 то $\alpha=\beta$ --- формула.
 
-Пусть $S$ --- множество, а $x$ --- переменная, тогда
+Например: Пусть $S$ --- множество, а $x$ --- переменная, тогда
 $x\in S$ --- формула, $\lnot(x\in S)$ (также обозначается как $x\notin S$) --- формула,
 как и $(\forall x)\lnot(x\in S)$.
 
@@ -603,11 +604,15 @@ $x\in S$ --- формула, $\lnot(x\in S)$ (также обозначаетс�
 \begin{enumerate}
 	\item{}$\eset$ --- {\it пустое множество}, для него выполняется аксиома
 	${(\forall x)x\notin\eset}$, из которой выводится закон
-	$\eset_1$: $\vdash x\notin\eset$.
+	$\eset_1$: $\vdash t\notin\eset$.
 
 	\item{}$A\subseteq B:=(\forall x)(x\in A\implies x\in B)$,
-	из чего доказуем закон
-	$\subseteq_1$: $t\in A,A\subseteq B\vdash t\in B$
+	из чего доказуемы законы
+
+	\begin{tabular}{rl|rl}
+		($\subseteq_1$) & $t\in A,A\subseteq B\vdash t\in B$                      &
+		($\subseteq_2$) & $(\forall x)(x\in A\implies x\in B)\vdash A\subseteq B$
+	\end{tabular}
 
 	\item{}$A\cap B$ --- {\it пересечение} множеств $A$ и $B$. Введём аксиому:
 	\[
@@ -624,13 +629,13 @@ $x\in S$ --- формула, $\lnot(x\in S)$ (также обозначаетс�
 	Из которой доказуем закон $\cup_1$: $t\in A\cap B\dashv~\vdash t\in A\lor t\in B$.
 \end{enumerate}
 
-Наконец, введём понятие равенства первой аксиомой ZFC:
+Введём понятие равенства {\it первой аксиомой ZFC:}
 \[
 	(\forall X)(\forall Y)[(\forall z)(z\in X\iff  z\in Y)\implies X=Y]
 \]
 
-Тогда для множеств $A$ и $B$ справелив закон ZFC1:\\
-$(\forall z)(z\in A\iff z\in B)\vdash A=B$.
+Тогда для множеств $A$ и $B$ справелив закон $=_{S 1}$:\\
+$(\forall z)(z\in A\iff z\in B)\vdash A=B$:
 \[
 	\begin{nd}
 		\hypo{1}{(\forall z)(z\in A\iff z\in B)}
@@ -642,7 +647,7 @@ $(\forall z)(z\in A\iff z\in B)\vdash A=B$.
 	\end{nd}
 \]
 
-Докажем закон $=_{S 1}$: $A\subseteq B, B\subseteq A\vdash A=B$.
+Докажем закон $=_{S 2}$: $A\subseteq B, B\subseteq A\vdash A=B$.
 \[
 	\begin{nd}
 		\hypo{1}{A\subseteq B}
@@ -662,6 +667,127 @@ $(\forall z)(z\in A\iff z\in B)\vdash A=B$.
 		\have{13}{t\in A\iff t\in B}\by{$\ruleEquiv_2$}{9,12}
 		\close
 		\have{14}{(\forall z)(z\in A\iff z\in B)}\Ai{6-13}
-		\have{15}{A=B}\by{ZFC1}{14}
+		\have{15}{A=B}\by{$=_{S 1}$}{14}
+	\end{nd}
+\]
+
+{\it Теорема:}
+Пусть $S$ --- множество, тогда $S=S\cap S$.
+
+	{\it Доказательство:}
+\[
+	\begin{nd}
+		\hypo{1}{}
+		\open[t]
+		\hypo{3}{}
+		\open
+		\hypo{4}{t\in S}
+		\have{5}{t\in S\land t\in S}\ai{4}
+		\have{6}{t\in S\cap S}\by{$\cap_1$}{5}
+		\close
+		\have{7}{t\in S\implies t\in S\cap S}\ii{4-6}
+		\open
+		\hypo{8}{t\in S\cap S}
+		\have{9}{t\in S\land t\in S}\by{$\cap_1$}{7}
+		\have{10}{t\in S}\ae{9}
+		\close
+		\have{11}{t\in S\cap S\implies t\in S}
+		\have{12}{t\in S\iff t\in S\cap S}\by{$\ruleEquiv_2$}{7,11}
+		\close
+		\have{13}{(\forall x)(x\in S\iff x\in S\cap S)}\Ai{3-12}
+		\have{14}{S=S\cap S}\by{$=_{S 1}$}{13}
+	\end{nd}
+\]
+
+\pagebreak
+
+Докажем теорему, обещанную в самом начале главы:
+
+{\it Теорема:} Пусть $A$ --- множество, причём
+${(\forall x)(x\in A\iff x=a)}$\footnote{
+	Объясните, почему это означает, что $A=\{a\}$.
+}, и $B\subseteq A$, тогда $B=\eset\lor B=A$.
+
+Для начала докажем {\it леммы}\footnote{Лемма --- теорема, созданная
+	для доказательства теоремы. Часто большие доказательства разбиваются
+	на леммы для понятности.}:
+\[
+	\begin{array}{l}
+		\text{(LM1)}~\lnot(\exists x:x\in B)\vdash B=\eset \\
+		\begin{nd}
+			\hypo{4}{\lnot(\exists x:x\in B)}
+			\have{5}{(\forall x)~x\notin B}\by{$\lnot\forall$}{4}
+			\open[t]
+			\hypo{6}{}
+			\open
+			\hypo{7}{t\in B}
+			\have{8}{t\notin B}\Ae{5}
+			\have{9}{\bot}\bi{7,8}
+			\have{10}{t\in \eset}\be{9}
+			\close
+			\have{11}{t\in B\implies t\in \eset}\ii{7-10}
+			\open
+			\hypo{12}{t\in\eset}
+			\have{13}{t\notin\eset}\by{$\eset_1$}{}
+			\have{14}{\bot}\bi{12,13}
+			\have{15}{t\in B}\be{14}
+			\close
+			\have{16}{t\in \eset\implies t\in B}\ii{12-15}
+			\have{17}{t\in B\iff t\in \eset}\by{$\ruleEquiv_2$}{11,16}
+			\close
+			\have{18}{(\forall x)(x\in B\iff x\in \eset)}\Ai{6-17}
+			\have{19}{B=\eset}\by{$=_{S 1}$}{18}
+		\end{nd}
+	\end{array}
+\]
+\[
+	\begin{array}{l}
+		\text{(LM2)}~[(\forall x)(x\in A\iff x=a)],[t\in A]\vdash t=a\\
+		\begin{nd}
+			\hypo{1}{(\forall x)(x\in A\iff x=a)}
+			\hypo{2}{t\in A}
+			\have{3}{t\in A\iff t=a}\Ai{1}
+			\have{4}{t=a}\by{$\ruleEquiv_3$}{2,3}
+		\end{nd}
+	\end{array}
+\]
+
+\pagebreak
+
+Наконец, докажем теорему:
+\[
+	\begin{nd}
+		\hypo{1}{(\forall x)(x\in A\iff x=a)}
+		\hypo{2}{B\subseteq A}
+		\have{3}{(\exists x:x\in B)\lor\lnot(\exists x:x\in B)}\by{EM}{}
+		\open
+		\hypo{4}{\lnot(\exists x:x\in B)}
+		\have{5}{B=\eset}\by{LM1}{4}
+		\have{6}{B=\eset\lor B=A}\oi{5}
+		\close
+		\open
+		\hypo{7}{\exists x:x\in B}
+		\open[t]
+		\hypo{8}{t\in B}
+		\have{9}{t\in A}\by{$\subseteq_2$}{2,8}
+		\have{11}{t=a}\by{LM2}{1,9}
+		\have{12}{a\in B}\by{$=$E}{8,11}
+		\close
+		\have{13}{a\in B}\Ee{7,8-12}
+		\open[t] 
+		\hypo{14}{}
+		\open
+		\hypo{15}{t\in A}
+		\have{16}{t=a}\by{LM2}{1,15}
+		\have{17}{t\in B}\by{$=$E}{13,16}
+		\close
+		\have{18}{t\in A\implies t\in B}
+		\close
+		\have{19}{(\forall x)(x\in A\implies x\in B)}\Ai{14-18}
+		\have{20}{A\subseteq B}\by{$\subseteq_2$}{19}
+		\have{21}{B=A}\by{$=_{S 2}$}{2,20}
+		\have{22}{B=\eset\lor B=A}\oi{21}
+		\close
+		\have{23}{B=\eset\lor B=A}\oe{3,4-6,7-22}
 	\end{nd}
 \]
