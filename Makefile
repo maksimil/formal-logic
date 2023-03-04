@@ -43,16 +43,17 @@ build: filesys
 
 build-docker:
 	$(call LOGSECTION, Preparing directories)
-	$(call MAKEDIR, $(DOCKEROUTDIR))
-	$(call MAKEDIR, $(DOCKEROBJDIR))
-	echo $$(basename $$(pwd)):$$(date +%Y-%d-%m-%H-%M-%S) >> $(DOCKEROUTDIR)/image
+	rm -rf $(DOCKEROUTDIR) $(DOCKEROBJDIR)
+	mkdir -p $(DOCKEROUTDIR)
+	mkdir -p $(DOCKEROBJDIR)
+	echo $$(basename $$(pwd)):$$(date +%Y-%d-%m-%H-%M-%S) >> $(DOCKEROBJDIR)/image
 	$(call LOGSECTION, Building the image)
-	sudo docker build . -t $$(cat $(DOCKEROUTDIR)/image)
+	sudo docker build . -t $$(cat $(DOCKEROBJDIR)/image)
 	$(call LOGSECTION, Dockerised build)
 	sudo docker run --rm \
 	-v $$(pwd)/$(DOCKEROUTDIRNAME):/root/src/$(OUTDIRNAME) \
 	-v $$(pwd)/$(DOCKEROBJDIRNAME):/root/src/$(OBJDIRNAME) \
-	-it $$(cat $(DOCKEROUTDIR)/image)
+	-i $$(cat $(DOCKEROBJDIR)/image)
 
 clean-docker:
 	$(MAKE) clean
