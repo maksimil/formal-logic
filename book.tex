@@ -42,6 +42,7 @@ ItalicFont=*ti,
 \usepackage{enumitem}
 % \usepackage{showframe}
 \usepackage{multicol}
+\usepackage{datetime}
 
 % math
 \usepackage{amsmath, amsfonts, amssymb}
@@ -52,6 +53,10 @@ ItalicFont=*ti,
 % titling
 \title{Математическая\\ логика}
 \author{Ксения К.}
+
+\newdateformat{mydate}{\twodigit{\THEDAY}-\twodigit{\THEMONTH}-\THEYEAR}
+
+\publisher{\mydate\today}
 
 % document
 \begin{document}
