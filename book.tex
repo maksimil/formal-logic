@@ -1,21 +1,47 @@
 \documentclass[titlepage, nofonts, nobib]{tufte-handout}
 
 % language
-\usepackage[T2A, T1]{fontenc}
-\usepackage[utf8]{inputenc}
-\usepackage[russian]{babel}
+\newcommand{\textls}[2][5]{%
+    \begingroup\addfontfeatures{LetterSpace=#1}#2\endgroup
+  }
+  \renewcommand{\allcapsspacing}[1]{\textls[15]{#1}}
+  \renewcommand{\smallcapsspacing}[1]{\textls[10]{#1}}
+  \renewcommand{\allcaps}[1]{\textls[15]{\MakeTextUppercase{#1}}}
+  \renewcommand{\smallcaps}[1]{\smallcapsspacing{\scshape\MakeTextLowercase{#1}}}
+  \renewcommand{\textsc}[1]{\smallcapsspacing{\textsmallcaps{#1}}}
+
+\defaultfontfeatures{Ligatures = TeX}
+\usepackage{fontspec}
+\usepackage{polyglossia}
+\setmainlanguage[babelshorthands=true]{russian}
+
+\setmainfont{cmun}[
+Extension=.otf,
+UprightFont=*rm,
+ItalicFont=*ti,
+  BoldFont=*bx,
+  BoldItalicFont=*bi,
+  SlantedFont=*sl,
+]
+\setsansfont{cmun}[
+  Extension=.otf,
+  UprightFont=*ss,
+  ItalicFont=*si,
+  BoldFont=*sx,
+  BoldItalicFont=*so,
+]
+% \setmonofont{cmun}[
+%   Extension=.otf,
+%   UprightFont=*btl,% light version
+%   ItalicFont=*bto,%  light version
+%   BoldFont=*tb,
+%   BoldItalicFont=*tx,
+% ]
 
 % page styling
-% \usepackage{parskip}
 \usepackage{enumitem}
 % \usepackage{showframe}
 \usepackage{multicol}
-
-% \makeatletter
-% \raggedright
-% \setlength{\parskip}{\medskipamount}
-% \newcommand{\@minipagerestore}{\setlength{\parskip}{\medskipamount}\raggedright}
-% \makeatother
 
 % math
 \usepackage{amsmath, amsfonts, amssymb}

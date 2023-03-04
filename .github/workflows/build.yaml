@@ -1,0 +1,25 @@
+name: Build
+
+on:
+  push:
+    tags: ["v*"]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      # Checkout
+      - uses: actions/checkout@main
+
+      # Docker build
+      - name: Build a docker image
+        run: make build-docker
+
+      # Release
+      - name: Release
+        uses: ncipollo/release-action@v1
+        with:
+          artifacts: "docker-out/*"
