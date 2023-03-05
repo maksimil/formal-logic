@@ -115,7 +115,7 @@ $[A\vdash B]$ диаграмму из $A$ в $B$ (рис.~\ref{fig:ex_ii}),
 где $A$, $B$ --- формулы, $P(x)$ --- шаблон формулы\footnote{
 	То есть $P(y)$ --- та же формула $P(x)$, но вместо всех $x$ стоят $y$.
 }, $S$ --- аксиома,
-$t$, $u$, $v$ --- переменные, $V$ --- такое выражение, что $V=V$ --- формула.
+$t$, $u$, $v$, $x$ --- переменные, $V$ --- такое выражение, что $V=V$ --- формула.
 Под ``или'' имеется в виду, что одним символом обозначаются
 два правила.
 В качестве примера докажем правило R: $A\vdash A$ и применим его
@@ -207,14 +207,14 @@ $(\forall x)P(x)\vdash\lnot[\exists x:\lnot P(x)]$\footnote{Вспомните
 \begin{enumerate}
 	\item{}Обосновать словесно правила вывода. Почему такая система называется
 	естественной дедукцией?
-	\item{}Какие утверждения будут теоремами, если $\bot$ --- аксиома?
+	\item{}Какие формулы будут теоремами, если $\bot$ --- аксиома?
+	Какие формулы будут теоремами, если введены аксиомы, противоречащие
+	друг другу?
 	\item{}Определить области видимости для формул $A$, $\lnot A$, $A\lor\lnot A$
 	и $\lnot(A\lor\lnot A)$ в доказательстве $\vdash A\lor\lnot A$.
-	\item{}*Доказать $\bot$E, используя остальные правила.
-	\item{}Доказать таблицы истинности для $\implies$, $\land$, $\lor$ и $\lnot$,
-	введя новый символ $\top$ и аксиому $\top=\lnot\bot$.
+	\item{}*Доказать $\bot$E, используя остальные правила.\label{ex:be_proof}
 	\pagebreak
-	\item{}*Доказать правила:
+	\item{}*Доказать законы:\label{ex:neg_rules_proof}
 	\begin{multicols}{2}
 		\begin{enumerate}
 			\item[($\lnot\land$)]{}$\lnot(A\land B)\vdash \lnot A\lor \lnot B$
@@ -229,7 +229,7 @@ $(\forall x)P(x)\vdash\lnot[\exists x:\lnot P(x)]$\footnote{Вспомните
 	\end{multicols}
 \end{enumerate}
 
-{\it Решение упражнения 6:}
+{\it Решение упражнения \ref{ex:neg_rules_proof}:}
 \[
 	\begin{array}{l|l}
 		\lnot(A\land B)\vdash \lnot A\lor\lnot B      &
@@ -375,7 +375,7 @@ $(\forall x)P(x)\vdash\lnot[\exists x:\lnot P(x)]$\footnote{Вспомните
 	\end{array}
 \]
 
-{\it Решение упражнения 4:}
+{\it Решение упражнения \ref{ex:be_proof}:}
 \[
 	\begin{array}{l}
 		\bot\vdash A \\

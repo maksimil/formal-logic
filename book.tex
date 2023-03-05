@@ -42,7 +42,6 @@ ItalicFont=*ti,
 \usepackage{enumitem}
 % \usepackage{showframe}
 \usepackage{multicol}
-\usepackage{datetime}
 
 % math
 \usepackage{amsmath, amsfonts, amssymb}
@@ -51,11 +50,11 @@ ItalicFont=*ti,
 \usepackage{caption,subcaption}
 
 % titling
-\title{Математическая\\ логика}
-\author{Ксения К.}
-
+\usepackage{datetime}
 \newdateformat{mydate}{\twodigit{\THEDAY}-\twodigit{\THEMONTH}-\THEYEAR}
 
+\author{Ксения К.}
+\title{Математическая\\ логика}
 \publisher{\mydate\today}
 
 % document

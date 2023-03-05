@@ -8,7 +8,7 @@ RUN tlmgr install \
 	cyrillic cm-unicode polyglossia xltxtra hyphen-russian realscripts \
 # math and formatting
 	caption enumitem \
-	tufte-latex hardwrap titlesec ragged2e textcase setspace fancyhdr
+	tufte-latex hardwrap titlesec ragged2e textcase setspace fancyhdr datetime fmtcount
 
 
 # getting source code

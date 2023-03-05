@@ -1,8 +1,5 @@
 \section{Равенство}
 
-На данный момент законы $=$I и $=$E немного бесполезны. Они могут пригодиться, разве что,
-только для доказательств некоторых утверждений с ``$=$''.
-
 \newcommand\ruleEquiv{\Leftrightarrow}
 Введём новое обозначение: ${(A\iff B):=(A\implies B)\land (B\implies A)}$,
 где $S:=T$ означает ``введём аксиому $S=T$''.
@@ -75,18 +72,22 @@
 			\open
 			\hypo{2}{\lnot[\exists x:\lnot P(x)]}
 			\have{3}{(\forall x)\lnot\lnot P(x)}\by{$\lnot\exists$}{2}
-			\open[t]
-			\hypo{4}{}
-			\have{5}{\lnot\lnot P(t)}\Ae{3}
-			\have{6}{P(t)=\lnot\lnot P(t)}\by{$=_{L 3}$}{}
-			\have{7}{P(t)}\by{$=$E}{5,6}
-			\close
-			\have{8}{(\forall x)P(x)}\Ai{4-7}
+			\have{4}{P(x)=\lnot\lnot P(x)}\by{$=_{L 3}$}{}
+			\have{8}{(\forall x)P(x)}\by{$=$E}{3,4}
 			\have{9}{\bot}\bi{1,8}
 			\close
 			\have{10}{\exists x:\lnot P(x)}\ne{2-8}
 		\end{nd}
 	\end{array}
 \]
+
+{\it Упражнения:}
+\begin{enumerate}
+	\item{}Доказать таблицы истинности для $\implies$, $\land$, $\lor$, $\lnot$, введя
+	новый символ $\top$ и аксиому $\top=\lnot\bot$\footnote{
+		То есть доказать теоремы $\top\land\top=\top$, $\top\land\bot=\bot$ и так далее.
+	}.
+	\item{}Доказать $(A\implies B)=\lnot A\lor B$.
+\end{enumerate}
 
 \pagebreak
