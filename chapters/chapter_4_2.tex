@@ -125,7 +125,7 @@ $[A\vdash B]$ диаграмму из $A$ в $B$ (рис.~\ref{fig:ex_ii}),
 	тогда $Q(\alpha)=\alpha\land t$.
 }, $S$ --- аксиома,
 $t$, $u$, $v$, $x$ --- переменные, $V$ --- такое выражение, что ${V=V}$ --- формула.
-Под ``или'' имеется в виду, чт
+Под ``или'' имеется в виду, что
 два правила обозначаются одинаково.
 В качестве примера докажем правило R: $A\vdash A$\footnote{
 	R --- Reiteration, повторение.
@@ -152,64 +152,76 @@ $t$, $u$, $v$, $x$ --- переменные, $V$ --- такое выражени
 	\end{array}
 \]
 
-Докажем закон исключённого третьего (EM): $\vdash A\lor \lnot A$.
-\[
-	\begin{nd}
-		\hypo{}{\qquad\qquad}
-		\open
-		\hypo{1}{\lnot(A\lor\lnot A)}
-		\open
-		\hypo{2}{A}
-		\have{3}{A\lor \lnot A}\oi{2}
-		\have{4}{\bot}\bi{1,3}
-		\close
-		\have{5}{\lnot A}\ni{2-4}
-		\have{6}{A\lor\lnot A}\oi{5}
-		\have{7}{\bot}\bi{1,6}
-		\close
-		\have{8}{A\lor\lnot A}\ne{1-7}
-	\end{nd}
-\]
+\pagebreak
+
+\begin{marginfigure}
+	\[
+		\begin{nd}
+			\hypo{}{\qquad\qquad}
+			\open
+			\hypo{1}{\lnot(A\lor\lnot A)}
+			\open
+			\hypo{2}{A}
+			\have{3}{A\lor \lnot A}\oi{2}
+			\have{4}{\bot}\bi{1,3}
+			\close
+			\have{5}{\lnot A}\ni{2-4}
+			\have{6}{A\lor\lnot A}\oi{5}
+			\have{7}{\bot}\bi{1,6}
+			\close
+			\have{8}{A\lor\lnot A}\ne{1-7}
+		\end{nd}
+	\]
+	\caption{Доказательство EM}\label{fig:em_proof}
+\end{marginfigure}
+
+\begin{marginfigure}[0.5cm]
+	\[
+		\begin{nd}
+			\hypo{1}{(\forall x)P(x)}
+			\open
+			\hypo{2}{\exists x:\lnot P(x)}
+			\open[t]
+			\hypo{3}{\lnot P(t)}
+			\have{4}{P(t)}\Ae{1}
+			\have{5}{\bot}\bi{3,4}
+			\close
+			\have{6}{\bot}\Ee{2,3-5}
+			\close
+			\have{7}{\lnot[\exists x:\lnot P(x)]}\ni{2-6}
+		\end{nd}
+	\]
+	\caption{Доказательство $(\forall x)P(x)\vdash\lnot[\exists x:\lnot P(x)]$}
+	\label{fig:fr_proof}
+\end{marginfigure}
+
+Докажем закон исключённого третьего (EM): $\vdash A\lor \lnot A$ на
+рис.~\ref{fig:em_proof}.
+
 
 Для завершения построения формальной системы
 введём аксиому: $\lnot\bot$. Если $\vdash T$, то и $\lnot\bot\vdash T$,
 тогда $T$ --- теорема. Заметим, что благодаря правилу AI для всякой
 теоремы $T$ справедливо $\vdash T$.
 
-Докажем
-$(\forall x)P(x)\vdash\lnot[\exists x:\lnot P(x)]$\footnote{Вспомните
-	первое доказательство в этой книге и сравните словесные рассуждения с
-	диаграммой Фитча.
+Вспомните первое доказательство в этой книге и
+сравните словесные рассуждения с
+диаграммой Фитча на рис.~\ref{fig:fr_proof}.
 
-	Из диаграммы можно получить и сами словесные рассуждения:
-	\begin{enumerate}[label=(\arabic*)]
-		\item{}Предположим $(\forall x)P(x)$.\label{enum:1}
-		\item{}Предположим $\exists x:\lnot P(x)$.\label{enum:2}
-		\item{}Для произвольного $t$ предположим $\lnot P(t)$.\label{enum:3}
-		\item{}По $\forall$E, \ref{enum:1}: $P(t)$.\label{enum:4}
-		\item{}По $\bot$I, \ref{enum:3} и \ref{enum:4}: $\bot$.\label{enum:5}
-		\item{}По $\exists$E, \ref{enum:2}, \ref{enum:3}-\ref{enum:5}: $\bot$.\label{enum:6}
-		\item{}По $\lnot$I, \ref{enum:2}-\ref{enum:6}: $\lnot[\exists x:\lnot P(x)]$.\qed
-	\end{enumerate}
+Из диаграммы можно получить и сами словесные рассуждения:
+\begin{enumerate}[label=(\arabic*)]
+	\item{}Предположим $(\forall x)P(x)$.\label{enum:1}
+	\item{}Предположим $\exists x:\lnot P(x)$.\label{enum:2}
+	\item{}Для произвольного $t$ предположим $\lnot P(t)$.\label{enum:3}
+	\item{}По $\forall$E, \ref{enum:1}: $P(t)$.\label{enum:4}
+	\item{}По $\bot$I, \ref{enum:3} и \ref{enum:4}: $\bot$.\label{enum:5}
+	\item{}По $\exists$E, \ref{enum:2}, \ref{enum:3}-\ref{enum:5}: $\bot$.\label{enum:6}
+	\item{}По $\lnot$I, \ref{enum:2}-\ref{enum:6}: $\lnot[\exists x:\lnot P(x)]$.\qed
+\end{enumerate}
 
-	Их можно привести к более человеческому виду и получить доказательство на
-	с.~\pageref{wordproof}.
-}.
-\[
-	\begin{nd}
-		\hypo{1}{(\forall x)P(x)}
-		\open
-		\hypo{2}{\exists x:\lnot P(x)}
-		\open[t]
-		\hypo{3}{\lnot P(t)}
-		\have{4}{P(t)}\Ae{1}
-		\have{5}{\bot}\bi{3,4}
-		\close
-		\have{6}{\bot}\Ee{2,3-5}
-		\close
-		\have{7}{\lnot[\exists x:\lnot P(x)]}\ni{2-6}
-	\end{nd}
-\]
+Их можно привести к более человеческому виду и получить доказательство на
+с.~\pageref{wordproof}.
+
 
 {\it Упражнения:}
 \begin{enumerate}
@@ -219,9 +231,8 @@ $(\forall x)P(x)\vdash\lnot[\exists x:\lnot P(x)]$\footnote{Вспомните
 	Какие формулы будут теоремами, если введены аксиомы, противоречащие
 	друг другу?
 	\item{}Определить области видимости для формул $A$, $\lnot A$, $A\lor\lnot A$
-	и $\lnot(A\lor\lnot A)$ в доказательстве $\vdash A\lor\lnot A$.
+	и $\lnot(A\lor\lnot A)$ на рис.~\ref{fig:em_proof}.
 	\item{}*Доказать $\bot$E, используя остальные правила.\label{ex:be_proof}
-	\pagebreak
 	\item{}*Доказать законы:\label{ex:neg_rules_proof}
 	\begin{multicols}{2}
 		\begin{enumerate}
@@ -235,7 +246,23 @@ $(\forall x)P(x)\vdash\lnot[\exists x:\lnot P(x)]$\footnote{Вспомните
 			\item[($\exists\lnot$)]{}$\exists x:\lnot P(x)\vdash \lnot[(\forall x)P(x)]$
 		\end{enumerate}
 	\end{multicols}
+	\item{}Получить словесные рассуждения из решений предыдущих упражнений.
 \end{enumerate}
+
+{\it Решение упражнения \ref{ex:be_proof}:}
+\[
+	\begin{array}{l}
+		\bot\vdash A \\
+		\begin{nd}
+			\hypo{1}{\bot}
+			\open
+			\hypo{2}{\lnot A}
+			\have{3}{\bot}\r{1}
+			\close
+			\have{4}{A}\ne{2-3}
+		\end{nd}
+	\end{array}
+\]
 
 {\it Решение упражнения \ref{ex:neg_rules_proof}:}
 \[
@@ -379,21 +406,6 @@ $(\forall x)P(x)\vdash\lnot[\exists x:\lnot P(x)]$\footnote{Вспомните
 			\have{6}{\bot}\Ee{1,3-5}
 			\close
 			\have{7}{\lnot[(\forall x)P(x)]}\ni{2-6}
-		\end{nd}
-	\end{array}
-\]
-
-{\it Решение упражнения \ref{ex:be_proof}:}
-\[
-	\begin{array}{l}
-		\bot\vdash A \\
-		\begin{nd}
-			\hypo{1}{\bot}
-			\open
-			\hypo{2}{\lnot A}
-			\have{3}{\bot}\r{1}
-			\close
-			\have{4}{A}\ne{2-3}
 		\end{nd}
 	\end{array}
 \]
