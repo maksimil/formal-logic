@@ -25,7 +25,7 @@
 		\end{nd}
 	\]
 
-	\caption{Пример использования правила ${[A\vdash C]\vdash (A\implies C)}$.}
+	\caption{Пример использования правила ${[A\to C]\vdash (A\implies C)}$.}
 	\label{fig:ex_ii}
 \end{marginfigure}
 
@@ -42,7 +42,7 @@
 		\end{nd}
 	\]
 
-	\caption{Пример использования правила ${[\exists x:P(x)],[t;P(t)\vdash C]\vdash C}$.}
+	\caption{Пример использования правила ${[\exists x:P(x)],[t;P(t)\to C]\vdash C}$.}
 	\label{fig:ex_Ee}
 \end{marginfigure}
 
@@ -65,50 +65,44 @@
 $K\gamma A$, $A=B$ --- формулы.
 Диаграммы Фитча и $\bot$ тоже являются формулами.
 
-Правило вывода: $A\vdash T$, если можно построить диаграмму,
-предполагающую $A$ и заключающую $T$.
-
-Пусть $\mathcal A$ --- совокупность формул. Если $\mathcal A$ находится
+{\it Правила построения диаграмм:} Пусть $\mathcal A$ --- совокупность формул.
+Если $\mathcal A$ находится
 в одной области видимости и $\mathcal A\vdash B$,
 то можно добавить строку $B$ в эту область видимости.
 Если $T$ выводимо без предположений
 (обозначается как $\vdash T$),
 то в диаграмму можно добавить строку $T$ в произвольную область видимости.
 
-Введём остальные правила вывода.
+{\it Введём правила вывода.}
 Для символов будут введены правила введения и исключения.
 При использовании правил справа пишется
 название правила и какие строки использованы. Для краткости обозначим с помощью
-$[A\vdash B]$ диаграмму из $A$ в $B$ (рис.~\ref{fig:ex_ii}),
-а с помощью ${[t;A\vdash B]}$ ---
-диаграмму из $A$ в $B$, вводящее переменную $t$ (рис.~\ref{fig:ex_Ee}).
-Мы можем использовать $\vdash$, чтобы обозначить выводимость и
-существование диаграммы, потому что в данной формальной ситеме это достаточно
-близкие понятия.
-
-Ниже предоставлен полный список правил. Примеры их использования
+$[A\to B]$ диаграмму из $A$ в $B$ (рис.~\ref{fig:ex_ii}),
+а с помощью ${[t;A\to B]}$ ---
+диаграмму из $A$ в $B$, вводящую переменную $t$ (рис.~\ref{fig:ex_Ee}).
+Ниже предоставлен полный список {\it основных} правил. Примеры их использования
 можно увидеть на рис.~\ref{fig:ex_ai},\ref{fig:ex_ii},\ref{fig:ex_Ee},\ref{fig:ex_xi}.
 
 \hspace{-0.7cm}
 \begin{tabular}{rl|rl}
-	($\Rightarrow$I) & $[A\vdash B]\vdash (A\implies B)$           &
-	($\Rightarrow$E) & $A,(A\implies B)\vdash B$                     \\
-	($\land$I)       & $A,B\vdash A\land B$                        &
-	($\land$E)       & $A\land B\vdash A$ или $A\land B\vdash B$     \\
-	($\lor$I)        & $A\vdash A\lor B$ или $B\vdash A\lor B$     &
-	($\lor$E)        & $[A\lor B],[A\vdash C],[B\vdash C]\vdash C$   \\
-	($\lnot$I)       & $[A\vdash\bot]\vdash \lnot A$               &
-	($\lnot$E)       & $[\lnot A\vdash\bot]\vdash A$                 \\
-	($\bot$I)        & $A,\lnot A\vdash \bot$                      &
-	($\bot$E)        & $\bot\vdash A$                                \\
-	($\forall$I)     & $[t;\vdash P(t)]\vdash (\forall x)P(x)$     &
-	($\forall$E)     & $(\forall x)P(x)\vdash P(t)$                  \\
-	($\exists$I)     & $P(t)\vdash [\exists x:P(x)]$               &
-	($\exists$E)     & $[\exists x:P(x)],[t;P(t)\vdash C]\vdash C$   \\
-	($=$I)           & $\vdash V=V$                                &
-	($=$E)           & $[u=v],P(u)\vdash P(v)$                       \\
-	(AI)             & $\vdash S$                                  &
-	                 & или $[u=v], P(v)\vdash P(u)$                  \\
+	($\Rightarrow$I) & $[A\to B]\vdash (A\implies B)$            &
+	($\Rightarrow$E) & $A,(A\implies B)\vdash B$                   \\
+	($\land$I)       & $A,B\vdash A\land B$                      &
+	($\land$E)       & $A\land B\vdash A$ или $A\land B\vdash B$   \\
+	($\lor$I)        & $A\vdash A\lor B$ или $B\vdash A\lor B$   &
+	($\lor$E)        & $[A\lor B],[A\to C],[B\to C]\vdash C$       \\
+	($\lnot$I)       & $[A\to\bot]\vdash \lnot A$                &
+	($\lnot$E)       & $[\lnot A\to\bot]\vdash A$                  \\
+	($\bot$I)        & $A,\lnot A\vdash \bot$                    &
+	($\bot$E)        & $\bot\vdash A$                              \\
+	($\forall$I)     & $[t;\to P(t)]\vdash (\forall x)P(x)$      &
+	($\forall$E)     & $(\forall x)P(x)\vdash P(t)$                \\
+	($\exists$I)     & $P(t)\vdash [\exists x:P(x)]$             &
+	($\exists$E)     & $[\exists x:P(x)],[t;P(t)\to C]\vdash C$    \\
+	($=$I)           & $\vdash V=V$                              &
+	($=$E)           & $[u=v],P(u)\vdash P(v)$                     \\
+	(AI)             & $\vdash S$                                &
+	                 & или $[u=v], P(v)\vdash P(u)$                \\
 \end{tabular}
 
 \newcommand\bi[1]{\by{$\bot$I}{#1}}
@@ -127,6 +121,10 @@ $[A\vdash B]$ диаграмму из $A$ в $B$ (рис.~\ref{fig:ex_ii}),
 $t$, $u$, $v$, $x$ --- переменные, $V$ --- такое выражение, что ${V=V}$ --- формула.
 Под ``или'' имеется в виду, что
 два правила обозначаются одинаково.
+
+Для сокращения рассуждений нам понадобится правило введения {\it новых} правил вывода:
+$A\vdash T$, если $A\to T$.
+
 В качестве примера докажем правило R: $A\vdash A$\footnote{
 	R --- Reiteration, повторение.
 } и применим его
@@ -198,7 +196,6 @@ $t$, $u$, $v$, $x$ --- переменные, $V$ --- такое выражени
 Докажем закон исключённого третьего (EM): $\vdash A\lor \lnot A$ на
 рис.~\ref{fig:em_proof}.
 
-
 Для завершения построения формальной системы
 введём аксиому: $\lnot\bot$. Если $\vdash T$, то и $\lnot\bot\vdash T$,
 тогда $T$ --- теорема. Заметим, что благодаря правилу AI для всякой
@@ -221,7 +218,6 @@ $t$, $u$, $v$, $x$ --- переменные, $V$ --- такое выражени
 
 Их можно привести к более человеческому виду и получить доказательство на
 с.~\pageref{wordproof}.
-
 
 {\it Упражнения:}
 \begin{enumerate}
