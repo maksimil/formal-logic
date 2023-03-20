@@ -406,8 +406,8 @@ $T$ нужно показать $\top\to T$. Также формула в \ref{e
 		в $F$, то $t$ {\it свободна} в $F$.
 	} ни в одной из формул в совокупности $\Gamma$.
 
-	\item[(\Aee{})]{}$(\forall x)P(x)\vdash P(A)$, где $A$ и $x$
-	имеют один род\footnote{
+	\item[(\Aee{})]{}$(\forall x)P(x)\vdash P(t)$, где $t$ и $x$
+	имеют один род.\footnote{
 		Обычно род связанных переменных напрямую не указывается, а подразумевается,
 		что он должен быть таким, чтобы выражение $(\forall x)P(x)$ было формулой.
 	}.
@@ -419,7 +419,12 @@ $T$ нужно показать $\top\to T$. Также формула в \ref{e
 	(\exists\text{E})~ [\exists x:P(x)],[(\forall x)(P(x)\implies C)]\vdash C
 \]
 
-Теперь докажем законы отрицания кванторов.
+Заметим, что при введении правил для равенства и кванторов мы
+сначала выбираем, какой смысл мы придаём обозначениям, а потом вводим
+правила для формализации этого смысла.
+\textsc{С помощью правил мы формализуем смысл, придаваемый обозначениям.}
+
+В качестве примера докажем в нормальном виде один из законов отрицания кванторов.
 
 {\it Теорема:} $\lnot [\exists x:P(x)]\implies  (\forall x)\lnot P(x)$
 
@@ -437,16 +442,86 @@ $T$ нужно показать $\top\to T$. Также формула в \ref{e
 	вывести $(\forall x)\lnot P(x)$.\qed
 \end{enumerate}
 
+{\it Упражнения:}
+\begin{enumerate}
+	\item{}Обосновать правила вывода для квантора существования.
+	\item{}Доказать теоремы:
+	\begin{enumerate}
+		\item{}$[(\forall x)P(x)]\land[(\forall x)(P(x)\implies Q(x))]
+			\implies (\forall x)Q(x)$\label{thm:obv_forall}
+		\item{}$(\forall x)T(P(x))$, где $T(p)$ --- простая тавтология.\label{thm:obv_taut}
+		\item{}$(\forall x)T(P_1(x),...,P_{n}(x))$, где $T(p_1,...,p_{n})$ ---
+		простая тавтология.
+	\end{enumerate}
+	\item{}*Доказать в нормальном виде остальные законы отрицания кванторов.
+\end{enumerate}
+
+\section{Цепочки импликаций}
+
+Они позволяют нам привести доказательства выше к доказательствам в виде
+{\it цепочек импликаций}. Такие доказательства основаны на тавтологии
+\[
+	[(p\implies q)\land(q\implies r)]\implies [p\implies r],
+\]
+
+а шаги в построении цепочки подразумевают использование правила \implic{}.
+Знак импликации заменяет собой знак выводимости.
+
+{\it Теорема:} $\lnot[\exists x:P(x)]\implies (\forall x)\lnot P(x)$
+
+{\it Доказательство:}
+
+Пусть\footnote{
+	``Пусть'' --- синоним слова предположим. Некоторые авторы также
+	используют значок $\sqsupset$.
+} $\lnot[\exists x:P(x)]$. Возьмём произвольное $t$.
+\[
+	P(t)\xRightarrow{\text{$\exists$I}} \exists x:P(x)
+	\xRightarrow{p,\lnot p\vdash\bot} \bot
+\]
+
+Тогда $\lnot P(t)$ и $(\forall x)\lnot P(x)$
+по $\forall$I.\qed
+
 {\it Теорема:} $\lnot[(\forall x)P(x)]\implies \exists x:\lnot P(x)$
 
 {\it Доказательство:}
-\begin{enumerate}[label=(\arabic*)]
-	\item{}\label{1}Предположим $\lnot[(\forall x)P(x)]$.
-	\item{}\label{2}${\lnot[\exists x:\lnot P(x)]\implies (\forall x)\lnot\lnot P(x)}$
-	и $\lnot\lnot P(x)=P(x)$ по ранее доказанным теоремам, по $=$E можем вывести
-	${\lnot[\exists x:\lnot P(x)]\implies (\forall x)P(x)}$.
-	\item{}${[\lnot p\implies q], \lnot q\vdash p}$ по \taut{}, из \ref{1} и \ref{2}
-	имеем ${\exists x:\lnot P(x)}$.\qed
-\end{enumerate}
 
-\pagebreak
+Пусть $\lnot[(\forall x)P(x)]$.
+\[
+	\lnot[\exists x:\lnot P(x)]\implies (\forall x)\lnot\lnot P(x)
+	\xRightarrow{\lnot\lnot q\implies q} (\forall x)P(x)\implies\bot
+\]
+
+Тогда $\exists x:\lnot P(x)$.\qed
+
+{\it Теорема:} $(\forall x)\lnot P(x)\implies \lnot[\exists x:P(x)]$
+
+{\it Доказательство:}
+
+Пусть $(\forall x)\lnot P(x)$. Возьмём произвольное $t$. $\lnot P(t)$ по $\forall$E.
+\[
+	P(t)\implies \bot
+\]
+
+Тогда $(\forall x)(P(x)\implies \bot)$.
+\[
+	\exists x:P(x)\xRightarrow{\text{$\exists$E}} \bot
+\]
+
+Тогда $\lnot[\exists x:P(x)]$.\qed
+
+{\it Теорема:} $\exists x:\lnot P(x)\implies\lnot[(\forall x)P(x)]$
+
+{\it Доказательство:}
+
+Пусть $\exists x:\lnot P(x)$. Возьмём произвольное $t$. Пусть $\lnot P(t)$.
+\[
+	(\forall x)P(x)\implies P(t)\implies \bot
+\]
+
+Тогда ${\lnot P(t)\implies \lnot[(\forall x)P(x)]}$ и по $\forall$I, $\exists$E
+имеем $\lnot[(\forall x)P(x)]$.\qed
+
+Цепочки импликаций также можно называть ``человеческим видом'', потому что они более
+понятны при чтении.
