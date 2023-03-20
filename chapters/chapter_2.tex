@@ -450,6 +450,8 @@ $T$ нужно показать $\top\to T$. Также формула в \ref{e
 	\begin{enumerate}
 		\item{}$[(\forall x)P(x)]\land[(\forall x)(P(x)\implies Q(x))]
 			\implies (\forall x)Q(x)$\label{thm:obv_forall}
+		\item{}$[\exists x:P(x)]\land[(\forall x)(P(x)\implies Q(x))]
+			\implies \exists x:Q(x)$
 		\item{}$(\forall x)T(P(x))$, где $T(p)$ --- простая тавтология.\label{thm:obv_taut}
 		\item{}$(\forall x)T(P_1(x),...,P_{n}(x))$, где $T(p_1,...,p_{n})$ ---
 		простая тавтология.
@@ -466,7 +468,6 @@ $T$ нужно показать $\top\to T$. Также формула в \ref{e
 \]
 
 а шаги в построении цепочки подразумевают использование правила \implic{}.
-Знак импликации заменяет собой знак выводимости.
 
 {\it Теорема:} $\lnot[\exists x:P(x)]\implies (\forall x)\lnot P(x)$
 
@@ -495,6 +496,8 @@ $T$ нужно показать $\top\to T$. Также формула в \ref{e
 \]
 
 Тогда $\exists x:\lnot P(x)$.\qed
+
+\pagebreak
 
 {\it Теорема:} $(\forall x)\lnot P(x)\implies \lnot[\exists x:P(x)]$
 
