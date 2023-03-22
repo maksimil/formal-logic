@@ -169,7 +169,7 @@ $\bot$, а также $\lnot$, $\land$, $\lor$, $\implies$, $\iff$. Кванто
 \begin{enumerate}
 	\item{}$\vdash$ означает выводимость за один шаг.
 	\item{}$\to$ означает существование доказательства.
-	\item{}$\implies$ --- символ из алфавита формальной системы.
+	\item{}$\implies$ --- знак из алфавита формальной системы.
 \end{enumerate}
 
 Рассмотрим пример доказательства.
@@ -266,16 +266,16 @@ $(A\implies B)\land (A\implies C)$ буквой $\alpha$,
 Так как мы забыли понятие значения переменной,
 нам придётся заново ввести понятие равенства\footnote{
 	Точнее, мы введём правила, по которым можно манипулировать
-	формулами с символом $=$.
+	формулами с знаком $=$.
 }.
 
-Введём в алфавит символ $=$ и расширим понятие формулы: если $A$ и $B$ --- выражения,
+Введём в алфавит знак $=$ и расширим понятие формулы: если $A$ и $B$ --- выражения,
 имеющие род, то $A=B$ --- формула.
 
 Новый знак можно ввести набором из двух правил:
 $\lambda$I\footnote{I --- Introduction, введение} --- {\it правило введения}
 и $\lambda$E\footnote{E --- Elimination, исключение} --- {\it правило
-исключения (использования)}, где $\lambda$ --- символ, который мы хотим ввести.
+исключения (использования)}, где $\lambda$ --- знак, который мы хотим ввести.
 
 \pagebreak
 
@@ -360,7 +360,7 @@ $T$ нужно показать $\top\to T$. Также из неё удобно
 \newcommand\Eii{$\exists$I}
 \newcommand\Eee{$\exists$E}
 
-Введём в алфавит символы $\forall$ и $\exists$ и расширим понятие формулы:
+Введём в алфавит знаки $\forall$ и $\exists$ и расширим понятие формулы:
 пусть $A$ --- формула, а $\gamma$ --- переменная, не связанная в $A$,
 тогда $(\forall\gamma)A$ и $\exists\gamma:A$ --- формулы.
 
@@ -416,7 +416,7 @@ $T$ нужно показать $\top\to T$. Также из неё удобно
 	\item{}Обосновать ограничения на связанность и свободу переменных в правилах
 	\Aii{}, \Aee{}, \Eii{} и \Eee{}.
 	\pagebreak
-	\item{}Доказать теоремы:
+	\item{}\label{ex:obv_thm}Доказать теоремы:
 	\begin{fullwidth}
 		\begin{multicols}{2}
 			\begin{enumerate}
@@ -437,67 +437,10 @@ $T$ нужно показать $\top\to T$. Также из неё удобно
 
 \section{Цепочки импликаций}
 
-Они позволяют нам привести доказательства выше к доказательствам в виде
-{\it цепочек импликаций}. Такие доказательства основаны на тавтологии
-\[
-	[(p\implies q)\land(q\implies r)]\implies [p\implies r]
-\]
-
-{\it Теорема:} $\lnot[\exists x:P(x)]\implies (\forall x)\lnot P(x)$
-
-{\it Доказательство:}
-
-Пусть\footnote{
-	``Пусть'' --- синоним слова предположим. Некоторые авторы также
-	используют значок $\sqsupset$.
-} $\lnot[\exists x:P(x)]$. Возьмём произвольное $t$.
-\[
-	P(t)\xRightarrow{\text{$\exists$I}} \exists x:P(x)
-	\xRightarrow{p,\lnot p\vdash\bot} \bot
-\]
-
-Тогда $\lnot P(t)$ и $(\forall x)\lnot P(x)$
-по $\forall$I.\qed
-
-{\it Теорема:} $\lnot[(\forall x)P(x)]\implies \exists x:\lnot P(x)$
-
-{\it Доказательство:}
-
-Пусть $\lnot[(\forall x)P(x)]$.
-\[
-	\lnot[\exists x:\lnot P(x)]\implies (\forall x)\lnot\lnot P(x)
-	\xRightarrow{\lnot\lnot q\implies q} (\forall x)P(x)\implies\bot
-\]
-
-Тогда $\exists x:\lnot P(x)$.\qed
-
-{\it Теорема:} $(\forall x)\lnot P(x)\implies \lnot[\exists x:P(x)]$
-
-{\it Доказательство:}
-
-Пусть $(\forall x)\lnot P(x)$. Возьмём произвольное $t$. $\lnot P(t)$ по $\forall$E.
-\[
-	P(t)\implies \bot
-\]
-
-Тогда $(\forall x)(P(x)\implies \bot)$.
-\[
-	\exists x:P(x)\xRightarrow{\text{$\exists$E}} \bot
-\]
-
-Тогда $\lnot[\exists x:P(x)]$.\qed
-
-{\it Теорема:} $\exists x:\lnot P(x)\implies\lnot[(\forall x)P(x)]$
-
-{\it Доказательство:}
-
-Пусть $\exists x:\lnot P(x)$. Возьмём произвольное $t$. Пусть $\lnot P(t)$.
-\[
-	(\forall x)P(x)\implies P(t)\implies \bot
-\]
-
-Тогда ${\lnot P(t)\implies \lnot[(\forall x)P(x)]}$ и по $\forall$I, $\exists$E
-имеем $\lnot[(\forall x)P(x)]$.\qed
+Часто доказательства в математике записываются в виде {\it цепочек импликаций}.
+Цепочка $A_1\implies A_2\implies...\implies A_{n}$ означает, что $A_1\implies A_2$,
+$A_2\implies A_3$, ... и $A_{n-1}\implies A_{n}$.
+Построение такой цепочки доказывает $A_1\implies A_{n}$.
 
 Цепочки импликаций также можно называть ``человеческим видом'', потому что они более
 понятны при чтении.
@@ -513,13 +456,71 @@ $T$ нужно показать $\top\to T$. Также из неё удобно
 	\item{}
 	Пусть $A$.
 
-	$B\implies ...\implies \bot$ или $B\implies ...\implies \lnot A\implies\bot$
+	$B\implies ...\implies \bot$ (или $B\implies ...\implies \lnot A\implies\bot$)
 
 	Тогда $\lnot B$.
 \end{enumerate}
 
+{\it Теорема:} $\lnot[\exists x:P]\implies (\forall x)\lnot P$
+
+{\it Доказательство:}
+
+Пусть\footnote{
+	``Пусть'' --- синоним слова предположим. Некоторые авторы также
+	используют значок $\sqsupset$.
+} $\lnot[\exists x:P]$. Возьмём произвольное $t$.
+\[
+	P(x/_{a}t)\xRightarrow{\text{$\exists$I}} \exists x:P
+	\xRightarrow{p,\lnot p\vdash\bot} \bot
+\]
+
+Тогда $\lnot P(x/_{a}t)$ и $(\forall x)\lnot P$
+по $\forall$I.\qed
+
+{\it Теорема:} $\lnot[(\forall x)P]\implies \exists x:\lnot P$
+
+{\it Доказательство:}
+
+Пусть $\lnot[(\forall x)P]$.
+\[
+	\lnot[\exists x:\lnot P]\implies (\forall x)\lnot\lnot P
+	\xRightarrow{\lnot\lnot q\implies q} (\forall x)P\implies\bot
+\]
+
+Тогда $\exists x:\lnot P$.\qed
+
+{\it Теорема:} $(\forall x)\lnot P\implies \lnot[\exists x:P]$
+
+{\it Доказательство:}
+
+Пусть $(\forall x)\lnot P$. Возьмём произвольное $t$. $\lnot P(x/_{a}t)$ по $\forall$E.
+\[
+	P(x/_{a}t)\implies \bot
+\]
+
+Тогда $(\forall x)(P\implies \bot)$.
+\[
+	\exists x:P\xRightarrow{\text{$\exists$E}} \bot
+\]
+
+Тогда $\lnot[\exists x:P]$.\qed
+
+{\it Теорема:} $\exists x:\lnot P\implies\lnot[(\forall x)P]$
+
+{\it Доказательство:}
+
+Пусть $\exists x:\lnot P$. Возьмём произвольное $t$. Пусть $\lnot P(x/_{a}t)$.
+\[
+	(\forall x)P\implies P(x/_{a}t)\implies \bot
+\]
+
+Тогда ${\lnot P(x/_{a}t)\implies \lnot[(\forall x)P]}$ и по $\forall$I, $\exists$E
+имеем $\lnot[(\forall x)P]$.\qed
+
 {\it Упражнения:}
 \begin{enumerate}
+	\item{}Почему построение цепочки $A_1\implies...\implies A_{n}$
+	доказывает $A_1\implies A_{n}$?
 	\item{}Обосновать каждую импликацию в доказательствах законов отрицания кванторов.
 \end{enumerate}
 
