@@ -398,7 +398,7 @@ $T$ нужно показать $\top\to T$. Также из неё удобно
 {\it Доказательство:}
 \begin{enumerate}[label=(\arabic*)]
 	\item{}\label{1}Предположим $\lnot [\exists x:P]$.
-	\item{}\label{2}Введём переменную $t$.
+	\item{}\label{2}Введём переменную $t$, предполагая, что $P$ не содержит $t$.
 	\item{}\label{3}Предположим $P(x/_{a}t)$.
 	\item{}\label{4}По \Eii{}, \ref{3} имеем $\exists x:P$.
 	\item{}\label{5}По \implic{}, \ref{3}-\ref{4} имеем
@@ -445,7 +445,8 @@ $A_2\implies A_3$, ... и $A_{n-1}\implies A_{n}$.
 Цепочки импликаций также можно называть ``человеческим видом'', потому что они более
 понятны при чтении.
 
-В человеческом виде часто используются следующие обороты:
+В человеческом виде часто используются следующие обороты
+для доказательства $A\implies B$:
 \begin{enumerate}
 	\item{}
 	Пусть $A$.
@@ -456,9 +457,10 @@ $A_2\implies A_3$, ... и $A_{n-1}\implies A_{n}$.
 	\item{}
 	Пусть $A$.
 
-	$B\implies ...\implies \bot$ (или $B\implies ...\implies \lnot A\implies\bot$)
+	$\lnot B\implies ...\implies \bot$
+	(или $\lnot B\implies ...\implies \lnot A\implies\bot$)
 
-	Тогда $\lnot B$.
+	Тогда $B$.
 \end{enumerate}
 
 {\it Теорема:} $\lnot[\exists x:P]\implies (\forall x)\lnot P$
@@ -468,7 +470,8 @@ $A_2\implies A_3$, ... и $A_{n-1}\implies A_{n}$.
 Пусть\footnote{
 	``Пусть'' --- синоним слова предположим. Некоторые авторы также
 	используют значок $\sqsupset$.
-} $\lnot[\exists x:P]$. Возьмём произвольное $t$.
+} $\lnot[\exists x:P]$. Возьмём произвольное $t$. Это следующие доказательства
+предполагают, что $P$ не содержит $t$.
 \[
 	P(x/_{a}t)\xRightarrow{\text{$\exists$I}} \exists x:P
 	\xRightarrow{p,\lnot p\vdash\bot} \bot
@@ -488,6 +491,8 @@ $A_2\implies A_3$, ... и $A_{n-1}\implies A_{n}$.
 \]
 
 Тогда $\exists x:\lnot P$.\qed
+
+\pagebreak
 
 {\it Теорема:} $(\forall x)\lnot P\implies \lnot[\exists x:P]$
 
