@@ -7,7 +7,7 @@ RUN tlmgr install \
 # language
 	cyrillic cm-unicode polyglossia xltxtra hyphen-russian realscripts \
 # math and formatting
-	caption enumitem \
+	caption enumitem mathtools \
 	tufte-latex hardwrap titlesec ragged2e textcase setspace fancyhdr datetime fmtcount
 
 
@@ -15,7 +15,6 @@ RUN tlmgr install \
 RUN mkdir /root/src
 WORKDIR /root/src
 
-COPY fitch.sty .
 COPY book.tex .
 COPY Makefile .
 COPY chapters ./chapters
