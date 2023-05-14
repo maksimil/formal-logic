@@ -1,14 +1,13 @@
 \documentclass[titlepage, nofonts, nobib]{tufte-handout}
 
 % language
-\newcommand{\textls}[2][5]{%
-    \begingroup\addfontfeatures{LetterSpace=#1}#2\endgroup
-  }
-  \renewcommand{\allcapsspacing}[1]{\textls[15]{#1}}
-  \renewcommand{\smallcapsspacing}[1]{\textls[10]{#1}}
-  \renewcommand{\allcaps}[1]{\textls[15]{\MakeTextUppercase{#1}}}
-  \renewcommand{\smallcaps}[1]{\smallcapsspacing{\scshape\MakeTextLowercase{#1}}}
-  \renewcommand{\textsc}[1]{\smallcapsspacing{\textsmallcaps{#1}}}
+\newcommand{\textls}[2][5]{\begingroup\addfontfeatures{LetterSpace=#1}#2\endgroup}
+
+\renewcommand{\allcapsspacing}[1]{\textls[15]{#1}}
+\renewcommand{\smallcapsspacing}[1]{\textls[10]{#1}}
+\renewcommand{\allcaps}[1]{\textls[15]{\MakeTextUppercase{#1}}}
+\renewcommand{\smallcaps}[1]{\smallcapsspacing{\scshape\MakeTextLowercase{#1}}}
+\renewcommand{\textsc}[1]{\smallcapsspacing{\textsmallcaps{#1}}}
 
 \defaultfontfeatures{Ligatures = TeX}
 \usepackage{fontspec}
@@ -16,20 +15,20 @@
 \setmainlanguage[babelshorthands=true]{russian}
 
 \setmainfont{cmun}[
-Extension=.otf,
-UprightFont=*rm,
-ItalicFont=*ti,
+  Extension=.otf,
+  UprightFont=*rm,
+  ItalicFont=*ti,
   BoldFont=*bx,
   BoldItalicFont=*bi,
-  SlantedFont=*sl,
-]
+  SlantedFont=*sl,]
+
 \setsansfont{cmun}[
   Extension=.otf,
   UprightFont=*ss,
   ItalicFont=*si,
   BoldFont=*sx,
-  BoldItalicFont=*so,
-]
+  BoldItalicFont=*so,]
+
 % \setmonofont{cmun}[
 %   Extension=.otf,
 %   UprightFont=*btl,% light version
@@ -70,6 +69,6 @@ ItalicFont=*ti,
 \pagebreak
 \input{chapters/chapter_2.tex}
 \input{chapters/chapter_3.tex}
-\input{chapters/chapter_4.tex}
+\input{chapters/chapter_5.tex}
 
 \end{document}
