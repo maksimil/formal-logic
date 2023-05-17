@@ -192,34 +192,82 @@ $X$ и $Y$ и
 	z\in X\times Y\iff \exists x\in X,y\in Y:z=(x,y)
 \]
 Декартово произведение $A\times A$ также называют {\it декартовым квадратом}
-и обозначают $A^{2}$.
+и обозначают $A^{2}$. Существование декартова произведения следует из ZFC.
 
-% Рассмотрим задачу по-интереснее: как определить пересечение и объединение
-% всех множеств в множестве $U=\{u_1,u_2,...\}$, где $U$ может быть бесконечно?
-% Введём (из аксиом ZFC следуют необходимые формулы) унарные $\cup$, $\cap$
-% и аксиомы
-% \[
-%   \forall U\forall x(x\in \cap U\iff \forall u(u\in U\implies x\in u))
-% \]
-% \[
-%   \forall U\forall x(x\in \cup U\iff \exists u(u\in U\land x\in u))
-% \]
+Упорядоченную тройку и другие упорядоченные множества из $n$ элементов
+можно определить так:
+\[
+	(x,y,z):=((x,y),z)\qquad (x_1,...,x_{n}):=((x_1,...,x_{n-1}),x_{n})
+\]
+Тогда $X\times Y\times Z=(X\times Y)\times Z$ содержит все такие тройки.
+Аналогично определяются $X_1\times X_2\times ...\times X_{n}$ и $X^{n}$.
 
-% \vspace{1em}
-% {\it Упражнения:}
-% \begin{enumerate}
-%   \item{}Как можно определить упорядоченные множества из трёх элементов?
-%     Из одного элемента? Из $n$ элементов?
-%
-%   \item{}Доказать теоремы
-%     \begin{enumerate}
-%       \item{}${\exists e:\forall x(x\notin e)\implies
-%         \exists!e:\forall x(x\notin e)}$ \label{ex:eset_only}
-%       \item{}$\forall x\forall y[(x,y)\neq (y,x)]$
-%     \end{enumerate}
-%   \item{}Объяснить определения унарных $\cup$ и $\cap$.
-% \end{enumerate}
-%
-\pagebreak
+Из аксиом ZFC следует существование множества всех подмножеств множества $A$.
+Его обозначают как $2^{A}$ или $\mathcal P(A)$ и оно определяется аксиомой
+\[
+	\forall A\forall \alpha(\alpha\in 2^{A}\iff \alpha\subseteq A)
+\]
 
-% \section{Множество натуральных чисел и минимальность}
+Определим способ выделения подмножеств множества.
+Из аксиомы выделения\footnote{Её правильнее нужно называть {\it схемой аксиом},
+потому что она определяет по аксиоме для каждой подходящей формулы $\varphi$.}
+ZFC следует, что для каждой формулы $\varphi$ со свободными
+переменными $x_1,...,x_{n},w,A$  справедливо
+\[
+	\forall x_1....\forall x_{n}\forall A\exists B:\forall w(w\in B\iff
+	w\in A\land \varphi),
+\]
+то есть существует $B$, содержащее все $w\in A$ такие, что $\varphi$.
+Обычно такое построение множества $B$ записывают так:
+\[
+	B=\left\{w\in A\;\big|\;\varphi\right\}\qquad
+	\forall w(w\in B\iff w\in A\land \varphi)
+\]
+
+\newcommand\Z{\mathbb Z}
+Например, пусть $\Z$ --- множество целых чисел, а пустым местом будем обозначать
+произведение, тогда
+множество всех чётных целых чисел можно определить так:
+\[
+	\Z_{2}=\left\{x\in\Z\;\big|\;\exists z\in\Z:x=2z\right\}
+\]
+
+Рассмотрим задачу по-интереснее: как определить пересечение и объединение
+всех множеств в множестве $U$, где $U$ может быть бесконечно?
+Введём (из аксиом ZFC следуют необходимые формулы) унарные $\cup$, $\cap$
+и аксиомы
+\[
+	\forall U\forall x(x\in \cap U\iff \forall u(u\in U\implies x\in u))
+\]
+\[
+	\forall U\forall x(x\in \cup U\iff \exists u(u\in U\land x\in u))
+\]
+Заметим, что
+\[
+	\cup \{A,B\}=A\cup B\qquad \cap \{A,B\}=A\cap B
+\]
+Снова мы видим схожесть между $\land$ и $\forall$ и между $\lor$ и $\exists$.
+
+Таким образом определили 3 основных способа построения множеств:
+объединение, пересечение, выделение подмножества. Важно помнить
+формулы из их определений:
+\[
+	x\in \cup U\iff \exists u\in U:x\in u\qquad
+	x\in \cap U\iff (\forall u\in U)~x\in u
+\]
+\[
+	x\in \{w\in A\;\big|\; P(w)\}\iff x\in A\land P(x)
+\]
+
+\vspace{1em}
+{\it Упражнения:}
+\begin{enumerate}
+	\item{}Доказать теоремы
+		\begin{enumerate}
+			\item{}${\exists e:\forall x(x\notin e)\implies
+				\exists!e:\forall x(x\notin e)}$ \label{ex:eset_only}
+			\item{}$\forall x\forall y[(x,y)\neq (y,x)]$
+		\end{enumerate}
+	\item{}Объяснить определения унарных $\cup$ и $\cap$
+		и связь между логическими знаками $\land$, $\forall$, $\lor$ и $\exists$.
+\end{enumerate}
