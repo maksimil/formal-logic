@@ -49,6 +49,14 @@
 \usepackage{tikz}
 \usetikzlibrary{arrows.meta}
 
+% hyperref
+\usepackage{imakeidx}
+\usepackage{hyperref}
+\makeindex[title=Предметный указатель, intoc, columns=3]
+
+\let\oldindex\index
+\renewcommand\index[1]{\oldindex{#1|hyperpage}}
+
 % titling
 \usepackage{datetime}
 \newdateformat{mydate}{\twodigit{\THEDAY}-\twodigit{\THEMONTH}-\THEYEAR}
@@ -79,5 +87,12 @@
 
 \pagebreak
 \input{chapters/chapter_5.tex}
+
+\begin{fullwidth}
+	\newcommand\letterheading[1]{
+		\par\textbf{#1}\par\nopagebreak
+	}
+	\printindex
+\end{fullwidth}
 
 \end{document}

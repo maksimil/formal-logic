@@ -1,0 +1,46 @@
+(require "lang/english/utf8.xdy")
+(require "lang/russian/utf8.xdy")
+
+(define-sort-rule-orientations (forward backward forward forward))
+(use-rule-set   
+    :run 0
+    :rule-set (
+        "en-alphabetize" 
+        "ru-alphabetize" 
+        "en-ignore-special" 
+        "ru-ignore-special"
+    )
+)   
+(use-rule-set 
+    :run 1
+    :rule-set (
+        "en-resolve-diacritics"  
+        "ru-resolve-diacritics" 
+        "en-ignore-special" 
+        "ru-ignore-special"
+    )
+)
+(use-rule-set 
+    :run 2
+    :rule-set (
+        "en-resolve-case" 
+        "ru-resolve-case" 
+        "en-ignore-special"
+        "ru-ignore-special"
+    )
+)
+(use-rule-set 
+    :run 3
+    :rule-set (
+        "en-resolve-special"
+        "ru-resolve-special"
+    )
+)
+
+(markup-letter-group :open-head "~n\letterheading{" 
+										 :close-head "}~n"
+										 :capitalize)
+
+(markup-indexentry :open "~n  \item "         :depth 0)
+(markup-indexentry :open "~n  \item --- "     :depth 1)
+(markup-indexentry :open "~n  \item ---,--- " :depth 2)

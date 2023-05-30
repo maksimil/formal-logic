@@ -18,7 +18,11 @@ BASEOUT=$(OUTDIR)/$(RELEASENAME).pdf
 LOGSECTION=@echo "\033[32m==== $(1) =====\033[0m"
 MAKEDIR=[ ! -d $(1) ] && mkdir -p $(1) || true
 
-LATEX=latexmk -pdf -outdir=$(OBJDIR) -e '$$pdflatex = q[xelatex %O %S];$$pdf_previewer=q[zathura %S];ensure_path(q[TEXINPUTS], q[./patches]);'
+SET_XELATEX=$$pdflatex=q[xelatex %O %S]
+SET_PATCHES=ensure_path(q[TEXINPUTS], q[./patches])
+SET_MAKEIDX=$$makeindex=q[texindy -M $(PWD)/index_style.xdy %S]
+
+LATEX=latexmk -pdf -outdir=$(OBJDIR) -e '$$pdf_previewer=q[zathura %S];$(SET_XELATEX);$(SET_PATCHES);$(SET_MAKEIDX);'
 # LATEX=latexmk -pdf -outdir=$(OBJDIR) -e '$$pdf_previewer=q[zathura %S];ensure_path(q[TEXINPUTS], q[./patches]);'
 
 .PHONY: watch build filesys clean build-docker clean-docker
