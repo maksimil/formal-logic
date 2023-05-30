@@ -872,53 +872,59 @@ $\lnot\eqref{eq:thm_ex_in_class}$, то есть
 		\[
 			\exists M:I(M)
 		\]}.
-	Определим множество натуральных чисел как
+	Определим множество натуральных чисел с $0$ как
 	\[
-		\N:=\left\{a\in P\;\big|\; S(a)\right\}
+		\N_0:=\left\{a\in P\;\big|\; S(a)\right\}
 	\]
 	\begin{enumerate}
 		\item{}Пусть $P'$ --- другое индуктивное множество, которое может
-		отличаться от $P$ и $\N':=\left\{a\in P'\;\big|\; S(a)\right\}$.
-		Доказать $\N=\N'$.
-		\item{}Доказать, что $\N$ --- наименьшее индуктивное множество.
+		отличаться от $P$ и $\N_0':=\left\{a\in P'\;\big|\; S(a)\right\}$.
+		Доказать $\N_0=\N_0'$.
+		\item{}Доказать, что $\N_0$ --- наименьшее индуктивное множество.
 		В этом случае достаточно доказать утверждение
 		\[
-			(\forall M)~I(M)\implies\N\subseteq M
+			(\forall M)~I(M)\implies\N_0\subseteq M
 		\]
 		\item{}Доказать принцип математической индукции\index{индукция}
 		\footnote{Возьмём формулу $P(x)$,
 		для которой доказано
 		\[
-			P(0)\land (\forall n\in\N)~[P(n)\implies P(\sigma(n))]
+			P(0)\land (\forall n\in\N_0)~[P(n)\implies P(\sigma(n))]
 		\]
 		Тогда множество
 		\[
-			M:=\left\{n\in\N\;\big|\; P(n)\right\}
+			M:=\left\{n\in\N_0\;\big|\; P(n)\right\}
 		\]
-		удовлетворяет условию упражнения и $\N\subseteq M$,
+		удовлетворяет условию упражнения и $\N_0\subseteq M$,
 		тогда
 		\[
-			(\forall n\in\N)~P(n)
+			(\forall n\in\N_0)~P(n)
 		\]}:
 		\[
-			[0\in M\land (\forall n\in\N)~(n\in M\implies
-					\sigma(n)\in M)]\implies \N\subseteq M
+			[0\in M\land (\forall n\in\N_0)~(n\in M\implies
+					\sigma(n)\in M)]\implies \N_0\subseteq M
 		\]
-		\item{}Пусть отображения $+,+':\N^{2}\to\N$ оба удовлетворяют
+		\item{}Пусть отображения $+,+':\N_0^{2}\to\N_0$ оба удовлетворяют
 		\begin{enumerate}
-			\item{}$(\forall a\in\N)~a+0=a$
-			\item{}$(\forall a,b\in\N)~a+\sigma(b)=\sigma(a+b)$
+			\item{}$(\forall a\in\N_0)~a+0=a$
+			\item{}$(\forall a,b\in\N_0)~a+\sigma(b)=\sigma(a+b)$
 		\end{enumerate}
-		Доказать, что они равны на $\N^{2}$. Подсказка:
+		Доказать, что они равны на $\N_0^{2}$. Подсказка:
 		использовать индукцию с формулой
 		\[
-			P(n)\equiv (\forall a\in\N)~a+n=a+'n
+			P(n)\equiv (\forall a\in\N_0)~a+n=a+'n
 		\]
-		\item{}Пусть отображения $\cdot,\cdot':\N^{2}\to\N$ оба удовлетворяют
+		\item{}Пусть отображения $\cdot,\cdot':\N_0^{2}\to\N_0$ оба удовлетворяют
 		\begin{enumerate}
-			\item{}$(\forall a\in\N)~a\cdot 0=0$
-			\item{}$(\forall a\in\N)~a\cdot\sigma(n)=a\cdot n+a$
+			\item{}$(\forall a\in\N_0)~a\cdot 0=0$
+			\item{}$(\forall a,b\in\N_0)~a\cdot\sigma(b)=a\cdot b+a$
 		\end{enumerate}
-		Доказать, что они равны на $\N^{2}$.
+		Доказать, что они равны на $\N_0^{2}$.
 	\end{enumerate}
+
+	\item{}Пусть $a\in S$ и $f:S\to S$. Дать определение множеству
+	\[
+		V=\{a,f(a),f(f(a)),f(f(f(a))),...\}
+	\]
+	В каких случаях оно бесконечно?
 \end{enumerate}
