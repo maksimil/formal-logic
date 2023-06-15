@@ -1,3 +1,5 @@
+PROJDIR?=$(PWD)
+
 OUTDIRNAME=out
 OBJDIRNAME=obj
 OUTDIR=./$(OUTDIRNAME)
@@ -20,7 +22,7 @@ MAKEDIR=[ ! -d $(1) ] && mkdir -p $(1) || true
 
 SET_XELATEX=$$pdflatex=q[xelatex %O %S]
 SET_PATCHES=ensure_path(q[TEXINPUTS], q[./patches])
-SET_MAKEIDX=$$makeindex=q[texindy -M $(PWD)/index_style.xdy %S]
+SET_MAKEIDX=$$makeindex=q[texindy -M $(PROJDIR)/index_style.xdy %S]
 
 LATEX=latexmk -pdf -outdir=$(OBJDIR) -e '$$pdf_previewer=q[zathura %S];$(SET_XELATEX);$(SET_PATCHES);$(SET_MAKEIDX);'
 # LATEX=latexmk -pdf -outdir=$(OBJDIR) -e '$$pdf_previewer=q[zathura %S];ensure_path(q[TEXINPUTS], q[./patches]);'

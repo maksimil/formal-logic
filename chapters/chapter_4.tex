@@ -4,7 +4,7 @@
 как определённое отношение между элементами множеств $X$ и $Y$. Можем ввести бинарный
 предикатный знак
 \[
-	\forall x\forall y(xRy\iff (x,y)\in R)
+  \forall x\forall y(xRy\iff (x,y)\in R)
 \]
 
 Обычно предикатный знак и множество $R$ обозначают одинаково.
@@ -15,49 +15,72 @@ $R$ называют {\it бинарным отношением между}
 
 Например, рассмотрим множество $S=2^{\{a,b\}}$.
 \[
-	S=\{\eset,\{a\},\{b\},\{a,b\}\}
+  S=\{\eset,\{a\},\{b\},\{a,b\}\}
 \]
 Пусть $R\subseteq S^{2}$ --- отношение включения ($\subseteq$) на $S$, тогда
 \[
-	\begin{aligned}
-		R
-		 & =\left\{(x,y)\in S^{2}\;\big|\; x\subseteq y\right\}= \\
-		 & =\left\{
-		\begin{array}{cccc}
-			(\eset,\eset), & (\eset,\{a\}),   & (\eset,\{b\}),   & (\eset,\{a,b\}),  \\
-			(\{a\},\{a\}), & (\{a\},\{a,b\}), & (\{b\},\{a,b\}), & (\{a,b\},\{a,b\})
-		\end{array}\right\}
-	\end{aligned}
+  \begin{aligned}
+    R
+     & =\left\{(x,y)\in S^{2}\;\big|\; x\subseteq y\right\}= \\
+     & =\left\{
+    \begin{array}{cccc}
+      (\eset,\eset), & (\eset,\{a\}),   & (\eset,\{b\}),   & (\eset,\{a,b\}),  \\
+      (\{a\},\{a\}), & (\{a\},\{a,b\}), & (\{b\},\{a,b\}), & (\{a,b\},\{a,b\})
+    \end{array}\right\}
+  \end{aligned}
 \]
 
 \section{Отображения}
 
-Рассмотрим бинарное отношение $f\subseteq X\times Y$ со следующим свойством:
+Рассмотрим бинарное отношение $G\subseteq X\times Y$ со следующим свойством:
 \[
-	\forall x\in X~\exists! y\in Y:(x,y)\in f
+  \forall x\in X~\exists! y\in Y:(x,y)\in G
 \]
-Можем ввести унарный функциональный знак аксиомой
+Можем ввести унарный функциональный знак $f$ аксиомой
 \[
-	(\forall x\in X)~(x,f(x))\in f
+  (\forall x\in X)~(x,f(x))\in G
 \]
-Заметим, что из $(x,f(x))\in f$ следует $f(x)\in Y$.
+Заметим, что из $(x,f(x))\in G\subseteq X\times Y$ следует $f(x)\in Y$.
 
-Обычно функциональный знак и бинарное отношение $f$ обозначают одинаково.
-Такое $f$ называют {\it отображением}\index{отображение}
-из {\it области определения}\index{область!определения} $X$ в
-{\it область значений}\index{область!значений} $Y$ и пишут $f:X\to Y$.
-Отображения также называют функциями\index{функция}.
-
-Например, если $f:\Z\to\Z$ определено как $f(x)=2x$, то
+\index{отображение}\index{область!определения}
+\index{область!значений}\index{функция}\index{график}
+{\it Отображением} называют тройку $f=(X,Y,G)$, где
 \[
-	f=\left\{(0,0),(1,2),(-1,-2),(2,4),(-2,-4),...\right\}
+  G\subseteq X\times Y\qquad
+  \forall x\in X~\exists! y\in Y:(x,y)\in G
 \]
+Обычно функциональный знак и отображение обозначают одним знаком.
+$X$ называют {\it областью определения}, $Y$ --- {\it областью значений},
+а $G$ --- {\it графиком} отображения $f$.
+
+Запись $f:X\to Y$ означает, что $f$ --- отображение из области определения $X$
+в область значений $Y$.
+
+Формально, чтобы задать (определить) отображение, нужно определить его график.
+Из-за громоздкости такого подхода отображения чаще задают правилами,
+по которым каждому элементу $x\in X$
+ставится в соответствие единствененный элемент $f(x)\in Y$.
+По такому правилу обычно можно
+построить график и уже формально ввести отображение $f$, но в некоторых случаях
+эта задача может оказаться нетривиальной\footnote{Крайне простой, примитивной.}.
+
+Например, пусть для формулы $\varphi(x,y)$ выполняется
+\[
+  \forall x\in X~\exists !y\in Y:\varphi(x,y),
+\]
+тогда $f:=(X,Y,G)$, где
+\[
+  G:=\left\{(x,y)\in X\times Y\;\big|\; \varphi(x,y)\right\},
+\]
+является отображением, причём $(\forall x\in X)~\varphi(x,f(x))$.
+
+Например, рассмотрим ${\varphi(x,y)\equiv y=2x}$.
+С помощью этой формулы можем определить отображение $f:\Z\to\Z,f(x)=2x$.
 
 Для отображений вида $g:X_1\times ...\times X_{n}\to Y$
-введём также $n$-арные функциональные знаки аксиомами
+введём сокращение
 \[
-	(\forall x_1\in X_1)...(\forall x_{n}\in X_{n})~
-	((x_1,...,x_{n}), g(x_1,...,x_{n}))\in g
+  g(x_1,...,x_{n})\equiv g((x_1,...,x_{n}))
 \]
 Такие отображения называют {\it $n$-арными}\index{отображение!$n$-арное}.
 
@@ -68,45 +91,45 @@ $R$ называют {\it бинарным отношением между}
 {\it Образом множества} $A\subseteq X$\index{образ!множества}
 называют множество
 \[
-	\widetilde f(A):=\left\{y\in Y\;\big|\; \exists x\in A:y=f(x)\right\},
+  \widetilde f(A):=\left\{y\in Y\;\big|\; \exists x\in A:y=f(x)\right\},
 \]
 то есть в $\widetilde f(A)$ лежат образы элементов $A$. Таким образом, мы определили
 отображение $\widetilde f:2^{X}\to 2^{Y}$ ---
 {\it естественное расширение функции}\index{естественное расширение}
 $f$, обычно его обозначают
 тем же знаком\footnote{Мы можем себе это позволить, потому что
-	в большинстве случаев из контекста понятно, что имеется
-	в виду под знаком $f$.}.
+  в большинстве случаев из контекста понятно, что имеется
+  в виду под знаком $f$.}.
 
 {\it Прообразом множества}\index{прообраз!множества}
 $B\subseteq Y$ называют множество
 \[
-	f^{-1}(B):=\left\{x\in A\;\big|\; f(x)\in B\right\},
+  f^{-1}(B):=\left\{x\in A\;\big|\; f(x)\in B\right\},
 \]
 то есть в $f^{-1}(B)$ лежат все прообразы элементов $B$.
 
-Также определяют естественные расширения бинарных отображений.
-Пусть $(\circ):X\times Y\to Z$ --- произвольное бинарное отображение, тогда
-\[
-	a\in X,~ b\in Y,~A\subseteq X,~ B\subseteq Y
-\]
-\[
-	a\circ B:=\left\{z\in Z\;\big|\;\exists b\in B:z=a\circ b\right\}
-\]
-\[
-	A\circ b:=\left\{z\in Z\;\big|\;\exists a\in A:z=a\circ b\right\}
-\]
-\[
-	A\circ B:=\left\{z\in Z\;\big|\;\exists a\in A,b\in B:z=a\circ b\right\}
-\]
+% Также определяют естественные расширения бинарных отображений.
+% Пусть $(\circ):X\times Y\to Z$ --- произвольное бинарное отображение, тогда
+% \[
+%   a\in X,~ b\in Y,~A\subseteq X,~ B\subseteq Y
+% \]
+% \[
+%   a\circ B:=\left\{z\in Z\;\big|\;\exists b\in B:z=a\circ b\right\}
+% \]
+% \[
+%   A\circ b:=\left\{z\in Z\;\big|\;\exists a\in A:z=a\circ b\right\}
+% \]
+% \[
+%   A\circ B:=\left\{z\in Z\;\big|\;\exists a\in A,b\in B:z=a\circ b\right\}
+% \]
 
 Например, пусть $f:\Z\to\Z$ и $f(x)=|x|$, тогда
 \[
-	f(\{0,-1,1,2\})=\{0,1,2\}\qquad f^{-1}(\{0,1,2\})=\{0,-1,1,-2,2\}
+  f(\{0,-1,1,2\})=\{0,1,2\}\qquad f^{-1}(\{0,1,2\})=\{0,-1,1,-2,2\}
 \]
-\[
-	\{0,1,2\}+\{10,20\}=\{10,20,11,21,12,22\}
-\]
+% \[
+%   \{0,1,2\}+\{10,20\}=\{10,20,11,21,12,22\}
+% \]
 
 Прообразы и образы отображений --- одни из основных способов выделения
 подмножеств множеств $X$ и $Y$.
@@ -119,7 +142,7 @@ $B\subseteq Y$ называют множество
 Рассмотрим множество $U$ и сюръекцию ${u:I\to U}$,
 введём обозначения
 \[
-	u_{i}\equiv u(i)\qquad \{u_{i}\}_{i\in I}\equiv u(I)=U,
+  u_{i}\equiv u(i)\qquad \{u_{i}\}_{i\in I}\equiv u(I)=U,
 \]
 тогда $U$ называют {\it индексированным семейством}\index{индексированное семейство},
 $I$ --- {\it множеством индексов}\index{множество!индексов},
@@ -132,7 +155,7 @@ ${u:I\to U'}$, тогда $U=u(I)\subseteq U'$,
 
 Например, пусть $I=\Z$ и $a:I\to \Z$, $a(n)=2n$, тогда
 \[
-	a_{n}\equiv a(n)=2n\qquad A:=\{a_{n}\}_{n\in\Z}=\{2n\}_{n\in\Z}=a(\Z)
+  a_{n}\equiv a(n)=2n\qquad A:=\{a_{n}\}_{n\in\Z}=\{2n\}_{n\in\Z}=a(\Z)
 \]
 Заметим, что $a$ не является сюръекцией и $A\neq \Z$.
 
@@ -140,28 +163,28 @@ ${u:I\to U'}$, тогда $U=u(I)\subseteq U'$,
 Объединение и пересечение множеств из семейства $\{U_{i}\}_{i\in I}$
 обычно записывают так:
 \[
-	\bigcup_{i\in I}U_{i}\equiv\cup \{U_{i}\}_{i\in I}\qquad
-	\bigcap_{i\in I}U_{i}\equiv\cap \{U_{i}\}_{i\in I}
+  \bigcup_{i\in I}U_{i}\equiv\cup \{U_{i}\}_{i\in I}\qquad
+  \bigcap_{i\in I}U_{i}\equiv\cap \{U_{i}\}_{i\in I}
 \]
 
 Если $I=\N$, то принимают обозначения:
 \[
-	\{U_{k}\}_{k=1}^{\infty}\equiv\{U_{k}\}_{k\in\N}\qquad
-	\bigcup_{k=1}^{\infty}U_{k}\equiv\bigcup_{k\in\N}U_{k}\qquad
-	\bigcap_{k=1}^{\infty}U_{k}\equiv\bigcap_{k\in\N}U_{k}
+  \{U_{k}\}_{k=1}^{\infty}\equiv\{U_{k}\}_{k\in\N}\qquad
+  \bigcup_{k=1}^{\infty}U_{k}\equiv\bigcup_{k\in\N}U_{k}\qquad
+  \bigcap_{k=1}^{\infty}U_{k}\equiv\bigcap_{k\in\N}U_{k}
 \]
 
 Если $I=\{1,2,...,n\}=\left\{m\in\N\;\big|\;m\leq n\right\},n\in\N$,
 то принимают обозначения:
 \[
-	\{U_{k}\}_{k=1}^{n}\equiv\{U_{k}\}_{k\in I}\qquad
-	\bigcup_{k=1}^{n}U_{k}\equiv\bigcup_{k\in I}U_{k}\qquad
-	\bigcap_{k=1}^{n}U_{k}\equiv\bigcap_{k\in I}U_{k}
+  \{U_{k}\}_{k=1}^{n}\equiv\{U_{k}\}_{k\in I}\qquad
+  \bigcup_{k=1}^{n}U_{k}\equiv\bigcup_{k\in I}U_{k}\qquad
+  \bigcap_{k=1}^{n}U_{k}\equiv\bigcap_{k\in I}U_{k}
 \]
 Заметим также, что
 \[
-	\bigcup_{k=1}^{n}U_{k}=U_1\cup U_2\cup ...\cup U_{n}\qquad
-	\bigcap_{k=1}^{n}U_{k}=U_1\cap U_2\cap ...\cap U_{n}
+  \bigcup_{k=1}^{n}U_{k}=U_1\cup U_2\cup ...\cup U_{n}\qquad
+  \bigcap_{k=1}^{n}U_{k}=U_1\cap U_2\cap ...\cap U_{n}
 \]
 
 В формулах выше термы индексов $i$ и $k$ также называют связанными переменными.
@@ -176,93 +199,93 @@ ${u:I\to U'}$, тогда $U=u(I)\subseteq U'$,
 \vspace{1em}
 {\it Упражнения:}
 \begin{enumerate}
-	\item{}Почему $y\in f(A)$ ттк $y$ является образом элемента из $A$?
-	\item{}Пусть ${f:X\to Y}$, ${A_{X},B_{X}\subseteq X}$ и
-	${A_{Y},B_{Y}\in Y}$\footnote{Запись $a_1,a_2,...,a_{n}\in A$ означает
-	$a_1\in A$, $a_2\in A$,...,$a_{n}\in A$}.
-	Доказать следующие утверждения:
-	% \begin{fullwidth}
-	%   \begin{multicols}{2}
-	\begin{enumerate}
-		\item{}$A_{X}\subseteq B_{X}\implies f(A_{X})\subseteq f(B_{X})$
-		\item{}$A_{Y}\subseteq B_{Y}\implies f^{-1}(A_{Y})\subseteq f^{-1}(B_{Y})$
-		\item{}$A_{X}\subseteq f^{-1}(f(A_{X}))$
-		\item{}$A_{Y}=f(f^{-1}(A_{Y}))$
-		\item{}$f^{-1}(f(f^{-1}(f(A_{X}))))=f^{-1}(f(A_{X}))$
-		\item{}$f(A_{X})\cap f(B_{X})=\eset\implies A\cap B=\eset$
-		\item{}$A_{Y}\cap B_{Y}=\eset\implies f^{-1}(A_{Y})\cap f^{-1}(B_{Y})=\eset$
-	\end{enumerate}
-	%   \end{multicols}
-	% \end{fullwidth}
-	\item{}*Могут ли существовать отображения
-	\begin{multicols}{3}
-		\begin{enumerate}
-			\item{}$f:\eset\to A$
-			\item{}$f:A\to\eset$
-			\item{}$f:\eset\to\eset$
-		\end{enumerate}
-	\end{multicols}
+  \item{}Почему $y\in f(A)$ ттк $y$ является образом элемента из $A$?
+  \item{}Пусть ${f:X\to Y}$, ${A_{X},B_{X}\subseteq X}$ и
+  ${A_{Y},B_{Y}\in Y}$\footnote{Запись $a_1,a_2,...,a_{n}\in A$ означает
+  $a_1\in A$, $a_2\in A$,...,$a_{n}\in A$}.
+  Доказать следующие утверждения:
+  \begin{fullwidth}
+    \begin{multicols}{2}
+      \begin{enumerate}
+        \item{}$A_{X}\subseteq B_{X}\implies f(A_{X})\subseteq f(B_{X})$
+        \item{}$A_{Y}\subseteq B_{Y}\implies f^{-1}(A_{Y})\subseteq f^{-1}(B_{Y})$
+        \item{}$A_{X}\subseteq f^{-1}(f(A_{X}))$
+        \item{}$A_{Y}=f(f^{-1}(A_{Y}))$
+        \item{}$f^{-1}(f(f^{-1}(f(A_{X}))))=f^{-1}(f(A_{X}))$
+        \item{}$f(A_{X})\cap f(B_{X})=\eset\implies A\cap B=\eset$
+        \item{}$A_{Y}\cap B_{Y}=\eset\implies f^{-1}(A_{Y})\cap f^{-1}(B_{Y})=\eset$
+      \end{enumerate}
+    \end{multicols}
+  \end{fullwidth}
+  \item{}*Могут ли существовать отображения
+  \begin{multicols}{3}
+    \begin{enumerate}
+      \item{}$f:\eset\to A$
+      \item{}$f:A\to\eset$
+      \item{}$f:\eset\to\eset$
+    \end{enumerate}
+  \end{multicols}
 \end{enumerate}
 
 \section{Частичный порядок}
 
 \begin{marginfigure}[1cm]
-	\center
-	\begin{tikzpicture}
-		\node (e) at (-1.5,2) {$\eset$};
-		\node (a) at (0,3) {$\{a\}$};
-		\node (b) at (0,1) {$\{b\}$};
-		\node (ab) at (2,1) {$\{a,b\}$};
-		\node (abc) at (2,3) {$\{a,b,c\}$};
+  \center
+  \begin{tikzpicture}
+    \node (e) at (-1.5,2) {$\eset$};
+    \node (a) at (0,3) {$\{a\}$};
+    \node (b) at (0,1) {$\{b\}$};
+    \node (ab) at (2,1) {$\{a,b\}$};
+    \node (abc) at (2,3) {$\{a,b,c\}$};
 
-		\draw [-Latex] (e) -- (a);
-		\draw [-Latex] (e) -- (b);
-		\draw [-Latex] (e) -- (ab);
-		\draw [-Latex] (e) -- (abc);
+    \draw [-Latex] (e) -- (a);
+    \draw [-Latex] (e) -- (b);
+    \draw [-Latex] (e) -- (ab);
+    \draw [-Latex] (e) -- (abc);
 
-		\draw [-Latex] (a) -- (ab);
-		\draw [-Latex] (a) -- (abc);
+    \draw [-Latex] (a) -- (ab);
+    \draw [-Latex] (a) -- (abc);
 
-		\draw [-Latex] (b) -- (ab);
-		\draw [-Latex] (b) -- (abc);
+    \draw [-Latex] (b) -- (ab);
+    \draw [-Latex] (b) -- (abc);
 
-		\draw [-Latex] (ab) -- (abc);
-	\end{tikzpicture}
+    \draw [-Latex] (ab) -- (abc);
+  \end{tikzpicture}
 
-	\caption{Диаграмма отношения включения.}\label{fig:inc_diag}
+  \caption{Диаграмма отношения включения.}\label{fig:inc_diag}
 \end{marginfigure}
 
 \begin{marginfigure}
-	\center
-	\begin{tikzpicture}
-		\node (e) at (-1.5,2) {$\eset$};
-		\node (a) at (0,3) {$\{a\}$};
-		\node (b) at (0,1) {$\{b\}$};
-		\node (ab) at (2,1) {$\{a,b\}$};
-		\node (abc) at (2,3) {$\{a,b,c\}$};
+  \center
+  \begin{tikzpicture}
+    \node (e) at (-1.5,2) {$\eset$};
+    \node (a) at (0,3) {$\{a\}$};
+    \node (b) at (0,1) {$\{b\}$};
+    \node (ab) at (2,1) {$\{a,b\}$};
+    \node (abc) at (2,3) {$\{a,b,c\}$};
 
-		\draw [-Latex] (e) -- (a);
-		\draw [-Latex] (e) -- (b);
+    \draw [-Latex] (e) -- (a);
+    \draw [-Latex] (e) -- (b);
 
-		\draw [-Latex] (a) -- (ab);
+    \draw [-Latex] (a) -- (ab);
 
-		\draw [-Latex] (b) -- (ab);
+    \draw [-Latex] (b) -- (ab);
 
-		\draw [-Latex] (ab) -- (abc);
-	\end{tikzpicture}
+    \draw [-Latex] (ab) -- (abc);
+  \end{tikzpicture}
 
-	\caption{Сокращённая диаграмма отношения включения.}\label{fig:inc_diag_short}
+  \caption{Сокращённая диаграмма отношения включения.}\label{fig:inc_diag_short}
 \end{marginfigure}
 
 Возьмём бинарное отношение $R$ на множестве $X$. $R$ называют
 {\it частичным порядком}\index{частичный порядок}\index{порядок!частичный},
 если оно имеет следующие свойства:
 \begin{enumerate}
-	\item{}$(\forall x\in X)~xRx$ --- {\it рефлексивность}\index{рефлексивность}.
-	\item{}$(\forall x,y\in X)~xRy\land yRx\implies x=y$
-	--- {\it антиcимметричность}\index{антиcимметричность}.
-	\item{}$(\forall x,y,z\in X)~xRy\land yRz\implies xRz$
-	--- {\it транзитивность}\index{транзитивность}.
+  \item{}$(\forall x\in X)~xRx$ --- {\it рефлексивность}\index{рефлексивность}.
+  \item{}$(\forall x,y\in X)~xRy\land yRx\implies x=y$
+  --- {\it антиcимметричность}\index{антиcимметричность}.
+  \item{}$(\forall x,y,z\in X)~xRy\land yRz\implies xRz$
+  --- {\it транзитивность}\index{транзитивность}.
 \end{enumerate}
 Например, отношение $\leq$ на множестве $\Z$ является отношением частичного порядка.
 Для произвольного множества $S$ отношение включения является
@@ -281,7 +304,7 @@ $\{\eset,\{a\},\{b\},\{a,b\}, \{a,b,c\}\}$
 Отношение частичного порядка называют отношением {\it линейного порядка}
 \index{порядок!линейный}\index{линейный порядок}, если также выполняется
 \begin{enumerate}[resume*]
-	\item{}$(\forall x,y\in X)~xRy\lor yRx$ --- {\it полнота}\index{полнота}.
+  \item{}$(\forall x,y\in X)~xRy\lor yRx$ --- {\it полнота}\index{полнота}.
 \end{enumerate}
 То есть любая пара элементов сравнима. Отношение $\leq$ на $\Z$
 является отношением линейного порядка,
@@ -293,17 +316,17 @@ $\{\eset,\{a\},\{b\},\{a,b\}, \{a,b,c\}\}$
 \index{элемент!минимальный}\index{минимальный элемент}
 по $\preceq$, если
 \[
-	(\forall x\in X)~x\npreceq x_0
+  (\forall x\in X)~x\npreceq x_0
 \]
 
 Элемент $x_0\in X$ называют {\it наименьшим}
 \index{элемент!наименьший}\index{наименьший элемент} по $\preceq$, если
 \[
-	(\forall x\in X)~x_0\preceq x
+  (\forall x\in X)~x_0\preceq x
 \]
 Другими словами, \textsc{элемент является наименьшим,
-	если он меньше всех элементов и является минимальным, если его нельзя
-	``уменьшить''.}
+  если он меньше всех элементов и является минимальным, если его нельзя
+  ``уменьшить''.}
 
 Аналогично определяются {\it максимальные} и {\it наибольшие} элементы.
 Заметим, что из наименьшести (наибольшести) следует минимальность (максимальность).
@@ -311,31 +334,31 @@ $\{\eset,\{a\},\{b\},\{a,b\}, \{a,b,c\}\}$
 \index{элемент!наибольший}\index{наибольший элемент}
 
 \begin{marginfigure}
-	\center
-	\begin{tikzpicture}
-		\node (a) at (0,0) {$0$};
-		\node (b) at (1,0) {$1$};
-		\node (c) at (2,0) {$2$};
+  \center
+  \begin{tikzpicture}
+    \node (a) at (0,0) {$0$};
+    \node (b) at (1,0) {$1$};
+    \node (c) at (2,0) {$2$};
 
-		\draw [-Latex] (a) -- (b);
-		\draw [-Latex] (b) -- (c);
-	\end{tikzpicture}
+    \draw [-Latex] (a) -- (b);
+    \draw [-Latex] (b) -- (c);
+  \end{tikzpicture}
 
-	\caption{$\leq$ на $\{0,1,2\}$}\label{fig:less_higher}
+  \caption{$\leq$ на $\{0,1,2\}$}\label{fig:less_higher}
 \end{marginfigure}
 
 \begin{marginfigure}
-	\center
-	\begin{tikzpicture}
-		\node (a) at (0,1.5) {$\{a\}$};
-		\node (b) at (0,0.5) {$\{b\}$};
-		\node (ab) at (2,1) {$\{a,b\}$};
+  \center
+  \begin{tikzpicture}
+    \node (a) at (0,1.5) {$\{a\}$};
+    \node (b) at (0,0.5) {$\{b\}$};
+    \node (ab) at (2,1) {$\{a,b\}$};
 
-		\draw [-Latex] (a) -- (ab);
-		\draw [-Latex] (b) -- (ab);
-	\end{tikzpicture}
+    \draw [-Latex] (a) -- (ab);
+    \draw [-Latex] (b) -- (ab);
+  \end{tikzpicture}
 
-	\caption{$\subseteq$ на $\{\{a\},\{b\},\{a,b\}\}$}\label{fig:min_max}
+  \caption{$\subseteq$ на $\{\{a\},\{b\},\{a,b\}\}$}\label{fig:min_max}
 \end{marginfigure}
 
 Таким образом, множество $\{0,1,2\}$ содержит минимальные и максимальные по $\leq$
@@ -351,15 +374,15 @@ $\{\eset,\{a\},\{b\},\{a,b\}, \{a,b,c\}\}$
 % \vspace{1em}
 {\it Теорема:} Пусть $A,B\subseteq S$. Тогда множество $A\cap B$ ---
 наибольшее по включению подмножество $S$, содержащееся\footnote{Если $T\subseteq V$,
-	то говорят, что $T$ {\it содержится}\index{содержаться, $\subseteq$}
-	в $V$} в них обоих,
+  то говорят, что $T$ {\it содержится}\index{содержаться, $\subseteq$}
+  в $V$} в них обоих,
 а множество $A\cup B$ --- наименьшее по включению подмножество $S$,
 содержащее их оба.
 
 {\it Доказательство:}
 \[
-	S_{*}:=\left\{X\in 2^{S}\;\big|\; X\subseteq A\land X\subseteq B\right\}\qquad
-	S^{*}:=\left\{X\in 2^{S}\;\big|\; A\subseteq X\land B\subseteq X\right\}
+  S_{*}:=\left\{X\in 2^{S}\;\big|\; X\subseteq A\land X\subseteq B\right\}\qquad
+  S^{*}:=\left\{X\in 2^{S}\;\big|\; A\subseteq X\land B\subseteq X\right\}
 \]
 
 Нужно доказать, что множество $A\cap B$ --- наибольший по включению элемент $S_{*}$,
@@ -368,7 +391,7 @@ $\{\eset,\{a\},\{b\},\{a,b\}, \{a,b,c\}\}$
 
 Пусть $Z\in S_{*}$ и $x\in Z$, тогда
 \[
-	x\in Z\implies x\in A\land x\in B\implies x\in A\cap B,
+  x\in Z\implies x\in A\land x\in B\implies x\in A\cap B,
 \]
 что справедливо для любого $x$,
 значит ${(\forall Z\in S_{*})~Z\subseteq A\cap B}$. Тогда
@@ -379,46 +402,46 @@ $A\cap B$ является наибольшим элементом $S_{*}$.
 \vspace{1em}
 {\it Упражнения:}
 \begin{enumerate}
-	\item{}Доказать, что $A\cup B$ --- наименьший элемент $S^{*}$.
-	\item{}Доказать, что $\leq$ на $\Z$ и $\subseteq$ на $2^{S}$ --- частичные порядки.
-	\item{}Пусть $S$ --- произвольное множество.
-	Найти максимальные, минимальные, наибольшие и
-	наименьшие по включению элементы множеств
-	\[
-		2^{S}\qquad 2^{S}\setminus\{\eset\}\qquad
-		2^{S}\setminus \{S\}
-	\]
-	Нарисовать диаграммы для случая $S=\{a,b,c\}$.
-	\item{}*Доказать, что если наименьший элемент существует, то
-	он единственен.
-	\item{}*Пусть $\leq$ --- порядок (не частичный) на $X$, а $x_0\in X$ --- минимальный
-	элемент. Доказать, что $x_0$ --- наименьший элемент.
-	\item{}*Пусть $\Q$ --- множество рациональных чисел\footnote{
-		Множество рациональных чисел\index{множество!рациональных чисел, $\Q$}
-		--- множество всех дробей вида $a/b$, где
-		\[
-			a\in\Z,\quad b\in\N
-		\]
-		и для любых ${b'\in\N}$, ${a',p\in\Z}$ справедливо
-		\[
-			a=a'p\land b=b'p\implies p=1,
-		\]
-		где последнее условие обеспечивает простоту дроби
-		и единственность представления $a/b$.}.
-	Пусть $A\subseteq \Q$ и множество
-	\[
-		M:=\left\{x\in \Q\;\big|\;(\forall a\in A)~a\leq x\right\}
-	\]
-	не пустое. Существует ли в $M$ наименьший по $\leq$ элемент
-	в следующих случаях:
-	\begin{multicols}{2}
-		\begin{enumerate}
-			\item{}$A=[a,b]\cap\Q$, где $a,b\in\Q$
-			\item{}$A=\{a_1,a_2,...,a_{n}\}$
-			\item{}$A=\eset$
-			\item{}$A=\left\{x\in\Q\;\big|\; x^{2}<2\right\}$
-		\end{enumerate}
-	\end{multicols}
+  \item{}Доказать, что $A\cup B$ --- наименьший элемент $S^{*}$.
+  \item{}Доказать, что $\leq$ на $\Z$ и $\subseteq$ на $2^{S}$ --- частичные порядки.
+  \item{}Пусть $S$ --- произвольное множество.
+  Найти максимальные, минимальные, наибольшие и
+  наименьшие по включению элементы множеств
+  \[
+    2^{S}\qquad 2^{S}\setminus\{\eset\}\qquad
+    2^{S}\setminus \{S\}
+  \]
+  Нарисовать диаграммы для случая $S=\{a,b,c\}$.
+  \item{}*Доказать, что если наименьший элемент существует, то
+  он единственен.
+  \item{}*Пусть $\leq$ --- порядок (не частичный) на $X$, а $x_0\in X$ --- минимальный
+  элемент. Доказать, что $x_0$ --- наименьший элемент.
+  \item{}*Пусть $\Q$ --- множество рациональных чисел\footnote{
+    Множество рациональных чисел\index{множество!рациональных чисел, $\Q$}
+    --- множество всех дробей вида $a/b$, где
+    \[
+      a\in\Z,\quad b\in\N
+    \]
+    и для любых ${b'\in\N}$, ${a',p\in\Z}$ справедливо
+    \[
+      a=a'p\land b=b'p\implies p=1,
+    \]
+    где последнее условие обеспечивает простоту дроби
+    и единственность представления $a/b$.}.
+  Пусть $A\subseteq \Q$ и множество
+  \[
+    M:=\left\{x\in \Q\;\big|\;(\forall a\in A)~a\leq x\right\}
+  \]
+  не пустое. Существует ли в $M$ наименьший по $\leq$ элемент
+  в следующих случаях:
+  \begin{multicols}{2}
+    \begin{enumerate}
+      \item{}$A=[a,b]\cap\Q$, где $a,b\in\Q$
+      \item{}$A=\{a_1,a_2,...,a_{n}\}$
+      \item{}$A=\eset$
+      \item{}$A=\left\{x\in\Q\;\big|\; x^{2}<2\right\}$
+    \end{enumerate}
+  \end{multicols}
 \end{enumerate}
 
 \section{Замыкания и разбиения}
@@ -426,9 +449,9 @@ $A\cap B$ является наибольшим элементом $S_{*}$.
 Возьмём множество $A$ c произвольным частичным порядком $\leq$. Отображение
 $\Gamma:A\to A$ называют {\it замыканием на $A$ с $\leq$}\index{замыкание}, если
 \begin{enumerate}
-	\item{}$(\forall a\in A)~a\leq\Gamma(a)$
-	\item{}$(\forall a,b\in A)~a\leq b\implies \Gamma(a)\leq \Gamma(b)$
-	\item{}$(\forall a\in A)~\Gamma(\Gamma(a))=\Gamma(a)$
+  \item{}$(\forall a\in A)~a\leq\Gamma(a)$
+  \item{}$(\forall a,b\in A)~a\leq b\implies \Gamma(a)\leq \Gamma(b)$
+  \item{}$(\forall a\in A)~\Gamma(\Gamma(a))=\Gamma(a)$
 \end{enumerate}
 Элемент ${a\in A}$ называют {\it замкнутым по $\Gamma$}\index{замкнутость},
 если ${\Gamma(a)=a}$.
@@ -437,8 +460,8 @@ $\Gamma:A\to A$ называют {\it замыканием на $A$ с $\leq$}\i
 и $[a,b)$, где $a,b$ --- конечные числа, с частичным порядком $\subseteq$.
 Тогда отображение $\Gamma:I\to I$, определённое как
 \[
-	\Gamma((a,b)):=[a,b]\qquad \Gamma([a,b]):=[a,b]\qquad
-	\Gamma((a,b]):=[a,b]\qquad \Gamma([a,b)):=[a,b]
+  \Gamma((a,b)):=[a,b]\qquad \Gamma([a,b]):=[a,b]\qquad
+  \Gamma((a,b]):=[a,b]\qquad \Gamma([a,b)):=[a,b]
 \]
 является замыканием, а $[a,b]$ --- замкнутые по $\Gamma$ элементы $I$.
 
@@ -446,20 +469,20 @@ $\Gamma:A\to A$ называют {\it замыканием на $A$ с $\leq$}\i
 {\it Теорема:} Пусть $a\in A$. Тогда $\Gamma(a)$ --- наименьший по $\leq$
 замкнутый по $\Gamma$ элемент $A$,
 больший (содержащий\footnote{В зависимости от отношения $\leq$ формулу
-	$a\leq b$ также иногда читают как ``$b$ содержит $a$''.}) $a$.
+  $a\leq b$ также иногда читают как ``$b$ содержит $a$''.}) $a$.
 
-	{\it Доказательство:}
+  {\it Доказательство:}
 \[
-	\gamma:=\left\{q\in A\;\big|\; \Gamma(q)=q\land a\leq q\right\}
+  \gamma:=\left\{q\in A\;\big|\; \Gamma(q)=q\land a\leq q\right\}
 \]
 Нужно доказать, что $\Gamma(a)$ --- наименьший элемент $\gamma$.
 \[
-	\Gamma(\Gamma(a))=\Gamma(a)\land a\leq\Gamma(a)\implies\Gamma(a)\in\gamma
+  \Gamma(\Gamma(a))=\Gamma(a)\land a\leq\Gamma(a)\implies\Gamma(a)\in\gamma
 \]
 
 Пусть $q\in \gamma$, тогда
 \[
-	a\leq q\implies \Gamma(a)\leq\Gamma(q)=q\implies\Gamma(a)\leq q
+  a\leq q\implies \Gamma(a)\leq\Gamma(q)=q\implies\Gamma(a)\leq q
 \]
 и $\Gamma(a)$ --- минимальный элемент $\gamma$.\qed
 
@@ -471,69 +494,69 @@ $P(a)$ может быть любой формулой о $a$.
 
 В примере она примет вид
 \[
-	P(I)\equiv \exists a,b\in\R:I=[a,b],
+  P(I)\equiv \exists a,b\in\R:I=[a,b],
 \]
 где $\R$ --- множество действительных чисел.}.
 Пусть ${\Gamma':A\to A}$ --- такое отображение, что $\Gamma'(a)$ --- наименьший по
 $\leq$ замкнутый элемент $A$, содержащий $a$. Тогда $\Gamma'$ --- замыкание,
 причём элемент замкнут ттк он замкнут по $\Gamma'$.
 
-	{\it Доказательство:}
+  {\it Доказательство:}
 Проверим свойства замыкания.
 \begin{enumerate}
-	\item{}$(\forall a\in A)~a\leq \Gamma'(a)$ по определению $\Gamma'$.
+  \item{}$(\forall a\in A)~a\leq \Gamma'(a)$ по определению $\Gamma'$.
 
-	\item{}Пусть $a,b\in A$ и $a\leq b$. Элемент $\Gamma'(b)$ замкнут и
-	$a\leq b\leq\Gamma'(b)$, значит $a\leq\Gamma'(b)$. Тогда, по наименьшести,
-	$\Gamma'(a)\leq\Gamma'(b)$.
+  \item{}Пусть $a,b\in A$ и $a\leq b$. Элемент $\Gamma'(b)$ замкнут и
+  $a\leq b\leq\Gamma'(b)$, значит $a\leq\Gamma'(b)$. Тогда, по наименьшести,
+  $\Gamma'(a)\leq\Gamma'(b)$.
 
-	\item{}$a$ --- наименьший элемент, содержащий $a$, поэтому
-	если $P(a)$, то $\Gamma'(a)=a$. Если $\Gamma'(a)=a$, то $P(a)$
-	по определению $\Gamma'$.
+  \item{}$a$ --- наименьший элемент, содержащий $a$, поэтому
+  если $P(a)$, то $\Gamma'(a)=a$. Если $\Gamma'(a)=a$, то $P(a)$
+  по определению $\Gamma'$.
 
-	\item{}$\Gamma'(a)$ замкнут, поэтому $\Gamma'(\Gamma'(a))=\Gamma'(a)$.\qed
+  \item{}$\Gamma'(a)$ замкнут, поэтому $\Gamma'(\Gamma'(a))=\Gamma'(a)$.\qed
 \end{enumerate}
 
 \newcommand\B{\mathcal B}
 Возьмём множество $S$ и представим его как объединение семейства непустых
 попарно непересекающихся множеств $\B:=\{B_{i}\}_{i\in I}$.
 \[
-	S=\bigcup_{i\in I}B_{i}\qquad
-	(\forall i,j\in I:i\neq j)~B_{i}\cap B_{j}=\eset\qquad
-	(\forall i\in I)~B_{i}\neq\eset
+  S=\bigcup_{i\in I}B_{i}\qquad
+  (\forall i,j\in I:i\neq j)~B_{i}\cap B_{j}=\eset\qquad
+  (\forall i\in I)~B_{i}\neq\eset
 \]
 Такое представление называется {\it разбиением}\index{разбиение}.
 Определим следующее множество:
 \[
-	T:=\left\{\alpha\in 2^{S}\;\big|\; (\forall x,y\in\alpha,i,j\in I)~
-	x\neq y\land	x\in B_{i}\land y\in B_{j}\implies i\neq j\right\},
+  T:=\left\{\alpha\in 2^{S}\;\big|\; (\forall x,y\in\alpha,i,j\in I)~
+  x\neq y\land	x\in B_{i}\land y\in B_{j}\implies i\neq j\right\},
 \]
 то есть все элементы множества $\alpha\in T$ содержатся в разных $B_{i}$.
 
 \vspace{1em}
 {\it Теорема:} Если $\alpha$ --- максимальный по включению элемент $T$, то
 \begin{equation}\label{eq:thm_ex_in_class}
-	(\forall i\in I)~\exists a\in\alpha:a\in B_{i}
+  (\forall i\in I)~\exists a\in\alpha:a\in B_{i}
 \end{equation}
 
 {\it Доказательство:}
 Пусть $\alpha$ --- максимальный по включению элемент $T$ и
 $\lnot\eqref{eq:thm_ex_in_class}$, то есть
 \[
-	\exists i\in I:(\forall a\in\alpha)~a\notin B_{i}
+  \exists i\in I:(\forall a\in\alpha)~a\notin B_{i}
 \]
 
 Множество $B_{i}$ не пустое, значит существует элемент $b\in B_{i}$.
 Тогда множество $\alpha\cup \{b\}$ лежит в $T$, что противоречит
 максимальности $\alpha$\footnote{Вспомним, что максимальный элемент
-	нельзя ``увеличить''.}.
+  нельзя ``увеличить''.}.
 Источник противоречия --- отрицание \eqref{eq:thm_ex_in_class}.\qed
 
 \vspace{1em}
 {\it Теорема:} Максимальные по включению элементы $T$ определяют
 отображения $f:\B\to S$ такие, что
 \[
-	(\forall b\in\B)~f(b)\in b
+  (\forall b\in\B)~f(b)\in b
 \]
 Отображения со свойством $f(b)\in b$ называют {\it функциями выбора}.
 
@@ -541,20 +564,20 @@ $\lnot\eqref{eq:thm_ex_in_class}$, то есть
 элемент $T$.
 По определению $T$ (если принять $i=j$)
 \[
-	(\forall i\in I,a,b\in\alpha)~i=i\implies a=b\lor a\notin B_{i}\lor b\notin B_{i}
+  (\forall i\in I,a,b\in\alpha)~i=i\implies a=b\lor a\notin B_{i}\lor b\notin B_{i}
 \]
 \[
-	(\forall i\in I,a,b\in\alpha)~a,b\in B_{i}\implies a=b
+  (\forall i\in I,a,b\in\alpha)~a,b\in B_{i}\implies a=b
 \]
 
 Используя полученное утверждение и предыдущую теорему, получаем
 \[
-	(\forall i\in I)~\exists !a\in\alpha:a\in B_{i}
+  (\forall i\in I)~\exists !a\in\alpha:a\in B_{i}
 \]
 
 Тогда через следующее бинарное отношение $f$ между $\B$ и $S$
 \[
-	bfa\iff a\in \alpha\land a\in b,\quad b\in\B,~a\in S
+  bfa\iff a\in \alpha\land a\in b,\quad b\in\B,~a\in S
 \]
 можем определить необходимое отображение $f:\B\to S$.\qed
 
@@ -574,74 +597,74 @@ $\lnot\eqref{eq:thm_ex_in_class}$, то есть
 
 Они определяют две функции выбора:
 \[
-	f(B_1)=a\quad f(B_2)=b\qquad g(B_1)=c\quad g(B_2)=b
+  f(B_1)=a\quad f(B_2)=b\qquad g(B_1)=c\quad g(B_2)=b
 \]
 
 \begin{marginfigure}
-	\center
-	\begin{tikzpicture}
-		\node (e) at (-2,2) {$\eset$};
+  \center
+  \begin{tikzpicture}
+    \node (e) at (-2,2) {$\eset$};
 
-		\node (a) at (0,3) {$\{a\}$};
-		\node (b) at (0,2) {$\{b\}$};
-		\node (c) at (0,1) {$\{c\}$};
+    \node (a) at (0,3) {$\{a\}$};
+    \node (b) at (0,2) {$\{b\}$};
+    \node (c) at (0,1) {$\{c\}$};
 
-		\node (ab) at (2,2.5) {$\{a,b\}$};
-		\node (bc) at (2,1.5) {$\{b,c\}$};
+    \node (ab) at (2,2.5) {$\{a,b\}$};
+    \node (bc) at (2,1.5) {$\{b,c\}$};
 
-		\draw [-Latex] (e) -- (a);
-		\draw [-Latex] (e) -- (b);
-		\draw [-Latex] (e) -- (c);
+    \draw [-Latex] (e) -- (a);
+    \draw [-Latex] (e) -- (b);
+    \draw [-Latex] (e) -- (c);
 
-		\draw [-Latex] (a) -- (ab);
-		\draw [-Latex] (b) -- (ab);
-		\draw [-Latex] (b) -- (bc);
-		\draw [-Latex] (c) -- (bc);
-	\end{tikzpicture}
+    \draw [-Latex] (a) -- (ab);
+    \draw [-Latex] (b) -- (ab);
+    \draw [-Latex] (b) -- (bc);
+    \draw [-Latex] (c) -- (bc);
+  \end{tikzpicture}
 
-	\caption{Отношение $\subseteq$ на $T$.}\label{fig:inc_t}
+  \caption{Отношение $\subseteq$ на $T$.}\label{fig:inc_t}
 \end{marginfigure}
 
 \vspace{1em}
 {\it Упражнения:}
 \begin{enumerate}
-	\item{}Пусть $\Gamma:A\to A$ --- замыкание на $A$ с $\leq$ и $a$ ---
-	максимальный по $\leq$ элемент $A$. Доказать, что $a$ замкнут по $\Gamma$.
-	\item{}Пусть $f:X\to Y$. Доказать, что отображение
-	\[
-		\Gamma:2^{X}\to 2^{X},\quad \Gamma(A):= f^{-1}(f(A))
-	\]
-	является замыканием на $2^{X}$ с $\subseteq$. Какие множества
-	будут замкнутыми, если $X=\Z,f:\Z\to \Z,f(x)=|x|$? Если $f(x)=x^{2}$?
-	\item{}Пусть $A$ --- множество с частичным порядком $\leq$.
-	Доказать, что $a\in A$ --- наибольший элемент, меньший $a$,
-	и наименьший элемент, больший $a$.
-	\item{}Доказать, что $\alpha\in T\implies 2^{\alpha}\subseteq T$.
-	\item{}*В каких случаях $T$ содержит наибольший по включению элемент?
-	Доказать, что если $\alpha\in T$ --- наибольший по включению элемент $T$,
-	то $T=2^{\alpha}$.
-	\item{}*Доказать, что для максимальности элемента $\alpha\in T$ необходимо
-	и достаточно
-	\[
-		(\forall i\in I)~\exists a\in\alpha:a\in B_{i}
-	\]
-	\item{}*Возьмём сюръекцию $f:S\to K$. Пусть
-	\[
-		B_{k}:=f^{-1}(\{k\}),\quad \B:=\{B_{k}\}_{k\in K}
-	\]
-	\begin{enumerate}
-		\item{}Доказать, что $\B$ --- разбиение $S$.
-		\item{}Пусть $h:\B\to S$ --- функция выбора и
-		\[
-			g:K\to S,\qquad g(k):=h(B_{k})
-		\]
-		Какое отношение между $g$ и $f$?
-		\item{}Найти $f(g(k))$ для произвольного $k\in K$.
-		\item{}Найти $g(f(s))$ для произвольного $s\in S$ при условии, что
-		\[
-			(\forall k\in K)(\forall a,b)~a,b\in B_{k}\implies a=b
-		\]
-	\end{enumerate}
+  \item{}Пусть $\Gamma:A\to A$ --- замыкание на $A$ с $\leq$ и $a$ ---
+  максимальный по $\leq$ элемент $A$. Доказать, что $a$ замкнут по $\Gamma$.
+  \item{}Пусть $f:X\to Y$. Доказать, что отображение
+  \[
+    \Gamma:2^{X}\to 2^{X},\quad \Gamma(A):= f^{-1}(f(A))
+  \]
+  является замыканием на $2^{X}$ с $\subseteq$. Какие множества
+  будут замкнутыми, если $X=\Z,f:\Z\to \Z,f(x)=|x|$? Если $f(x)=x^{2}$?
+  \item{}Пусть $A$ --- множество с частичным порядком $\leq$.
+  Доказать, что $a\in A$ --- наибольший элемент, меньший $a$,
+  и наименьший элемент, больший $a$.
+  \item{}Доказать, что $\alpha\in T\implies 2^{\alpha}\subseteq T$.
+  \item{}*В каких случаях $T$ содержит наибольший по включению элемент?
+  Доказать, что если $\alpha\in T$ --- наибольший по включению элемент $T$,
+  то $T=2^{\alpha}$.
+  \item{}*Доказать, что для максимальности элемента $\alpha\in T$ необходимо
+  и достаточно
+  \[
+    (\forall i\in I)~\exists a\in\alpha:a\in B_{i}
+  \]
+  \item{}*Возьмём сюръекцию $f:S\to K$. Пусть
+  \[
+    B_{k}:=f^{-1}(\{k\}),\quad \B:=\{B_{k}\}_{k\in K}
+  \]
+  \begin{enumerate}
+    \item{}Доказать, что $\B$ --- разбиение $S$.
+    \item{}Пусть $h:\B\to S$ --- функция выбора и
+    \[
+      g:K\to S,\qquad g(k):=h(B_{k})
+    \]
+    Какое отношение между $g$ и $f$?
+    \item{}Найти $f(g(k))$ для произвольного $k\in K$.
+    \item{}Найти $g(f(s))$ для произвольного $s\in S$ при условии, что
+    \[
+      (\forall k\in K)(\forall a,b)~a,b\in B_{k}\implies a=b
+    \]
+  \end{enumerate}
 \end{enumerate}
 
 \section{Отношение эквивалентности}
@@ -650,17 +673,17 @@ $\lnot\eqref{eq:thm_ex_in_class}$, то есть
 {\it отношением эквивалентности}\footnote{отношение эквивалентности},
 если оно имеет следующие свойства:
 \begin{enumerate}
-	\item{}$(\forall x\in X)~xRx$ --- {\it рефлексивность}.
-	\item{}$(\forall x,y\in X)~xRy\implies yRx$
-	--- {\it cимметричность}\index{симметричность}.
-	\item{}$(\forall x,y,z\in X)~xRy\land yRz\implies xRz$ --- {\it транзитивность}.
+  \item{}$(\forall x\in X)~xRx$ --- {\it рефлексивность}.
+  \item{}$(\forall x,y\in X)~xRy\implies yRx$
+  --- {\it cимметричность}\index{симметричность}.
+  \item{}$(\forall x,y,z\in X)~xRy\land yRz\implies xRz$ --- {\it транзитивность}.
 \end{enumerate}
 Например, отношение $=$ на любом множестве является отношением эквивалентности.
 
 Пусть $R$ --- отношение эквивалентности на $X$ и $x\in X$.
 Назовём множество
 \[
-	[x]:=\left\{y\in X\;\big|\; xRy\right\}
+  [x]:=\left\{y\in X\;\big|\; xRy\right\}
 \]
 {\it классом эквивалентности} элемента $x$.\index{класс эквивалентности}
 Он содержит все элементы, эквивалентные $x$.
@@ -670,21 +693,21 @@ $\lnot\eqref{eq:thm_ex_in_class}$, то есть
 {\it Теорема:}
 Для элементов $x,y\in X$ справедливо
 \[
-	[x]\cap [y]\neq\eset\implies [x]=[y]
+  [x]\cap [y]\neq\eset\implies [x]=[y]
 \]
 
 {\it Доказательство:}
 \[
-	[x]\cap [y]\neq\eset\implies\exists z:z\in[x]\land z\in[y]
+  [x]\cap [y]\neq\eset\implies\exists z:z\in[x]\land z\in[y]
 \]
 Тогда существует $z\in X$ такой, что
 \[
-	xRz\land yRz\xRightarrow{\text{симметричность}} xRz\land zRy
-	\xRightarrow{\text{транзитивность}} xRy
+  xRz\land yRz\xRightarrow{\text{симметричность}} xRz\land zRy
+  \xRightarrow{\text{транзитивность}} xRy
 \]
 Тогда для произвольного $z\in X$ справедливо
 \[
-	z\in [y]\iff yRz \iff xRz \iff z\in [x]
+  z\in [y]\iff yRz \iff xRz \iff z\in [x]
 \]
 и $[x]=[y]$.\qed
 
@@ -693,19 +716,19 @@ $\lnot\eqref{eq:thm_ex_in_class}$, то есть
 Его можно определить через естественное
 расширение отображения $[\cdot]:X\to 2^{X}$
 \[
-	X/R:=[X]=\left\{\alpha\in 2^{X}\;\big|\; \exists x\in X:\alpha=[x]\right\}
+  X/R:=[X]=\left\{\alpha\in 2^{X}\;\big|\; \exists x\in X:\alpha=[x]\right\}
 \]
 
 Пусть $\B=X/R=\{B_{i}\}_{i\in I}$\footnote{Любое множество $A$ можно представить
 как индексированное семейство:
 \[
-	I:= A\qquad a_{i}:=i\qquad
-	A=\{a_{i}\}_{i\in I}
+  I:= A\qquad a_{i}:=i\qquad
+  A=\{a_{i}\}_{i\in I}
 \]}, где каждому элементу соответствует единственный индекс, тогда
 \[
-	X=\bigcup_{i\in I}B_{i}\qquad
-	(\forall i,j\in I:i\neq j)~B_{i}\cap B_{j}=\eset\qquad
-	(\forall i\in I)~B_{i}\neq\eset,
+  X=\bigcup_{i\in I}B_{i}\qquad
+  (\forall i,j\in I:i\neq j)~B_{i}\cap B_{j}=\eset\qquad
+  (\forall i\in I)~B_{i}\neq\eset,
 \]
 значит множество классов эквивалентности является разбиением множества $X$.
 
@@ -713,19 +736,19 @@ $\lnot\eqref{eq:thm_ex_in_class}$, то есть
 отношение эквивалентности. Пусть $f:X\to I$ --- такое отображение,
 что $(\forall x\in X)~x\in C_{f(x)}$. Отношение
 \[
-	xRy\iff f(x)=f(y)
+  xRy\iff f(x)=f(y)
 \]
 является отношением эквивалентности (см. упр.~\ref{ex:fn_equiv}),
 причём
 \[
-	X/R=\{C_{i}\}_{i\in I}
+  X/R=\{C_{i}\}_{i\in I}
 \]
 
 Пусть $R_{m}:\Z\to\N_0$ --- функция остатка при делении на $m\in\N$,
 определим её следующим образом:
 \[
-	S_{m}(z):=\{r\in\N\;\big|\; \exists q\in\Z:z=qm+r\}\qquad
-	R_{m}(z):=\min S_{m}(z),
+  S_{m}(z):=\{r\in\N\;\big|\; \exists q\in\Z:z=qm+r\}\qquad
+  R_{m}(z):=\min S_{m}(z),
 \]
 где $\min A$ --- наименьший элемент $A$. В данном случае он существует, потому
 что у любого непустого подмножества $\N$ существует наименьший элемент.
@@ -736,15 +759,15 @@ $\lnot\eqref{eq:thm_ex_in_class}$, то есть
 
 Определим отношение эквивалентности (см. упр.~\ref{ex:fn_equiv}) на $\Z$:
 \[
-	x=_{m}y\iff R_{m}(x)=R_{m}(y)\qquad \Z_{m}:=\Z/=_{m}
+  x=_{m}y\iff R_{m}(x)=R_{m}(y)\qquad \Z_{m}:=\Z/=_{m}
 \]
 Это определение эквивалентно
 \[
-	x=_{m}y\iff \exists q\in\Z:x-y=qm
+  x=_{m}y\iff \exists q\in\Z:x-y=qm
 \]
 Введём операцию сложения на $\Z_{m}$, для которой выполняется
 \begin{equation}\label{eq:sum_axiom}
-	(\forall x,y\in\Z)~[x]+[y]=[x+y]
+  (\forall x,y\in\Z)~[x]+[y]=[x+y]
 \end{equation}
 Заметим, что первое использование $+$ --- отображение $\Z_{m}^{2}\to \Z_{m}$,
 а второе --- отображение $\Z^{2}\to\Z$.
@@ -752,7 +775,7 @@ $\lnot\eqref{eq:thm_ex_in_class}$, то есть
 Пусть $f:Z_{m}\to \Z$ --- функция выбора, тогда сложение можно
 определить так:
 \[
-	x+y:=[f(x)+f(y)]
+  x+y:=[f(x)+f(y)]
 \]
 
 \vspace{1em}
@@ -762,51 +785,51 @@ $\lnot\eqref{eq:thm_ex_in_class}$, то есть
 {\it Доказательство:}
 Пусть $x,y\in \Z$ и
 \[
-	x':=f([x])\quad x'=_{m}x\qquad y':=f([y])\quad y'=_{m}y
+  x':=f([x])\quad x'=_{m}x\qquad y':=f([y])\quad y'=_{m}y
 \]
 \[
-	\begin{aligned}
-		 & x'=_{m}x\land y'=_{m}y\implies                                 \\
-		 & \implies \exists q_{x}\in\Z:x'-x=q_{x}m\land
-		\exists q_{y}\in\Z:y'-y=q_{y}m\implies                            \\
-		 & \implies \exists q\in\Z:(x'+y')-(x+y)=qm\implies x'+y'=_{m}x+y
-	\end{aligned}
+  \begin{aligned}
+     & x'=_{m}x\land y'=_{m}y\implies                                 \\
+     & \implies \exists q_{x}\in\Z:x'-x=q_{x}m\land
+    \exists q_{y}\in\Z:y'-y=q_{y}m\implies                            \\
+     & \implies \exists q\in\Z:(x'+y')-(x+y)=qm\implies x'+y'=_{m}x+y
+  \end{aligned}
 \]
 \[
-	[x]+[y]=[x'+y']=[x+y]\qed
+  [x]+[y]=[x'+y']=[x+y]\qed
 \]
 
 \vspace{1em}
 {\it Теорема:} Пусть $+,+':\Z_{m}^{2}\to\Z_{m}^{2}$ --- отображения,
 удовлетворяющие \eqref{eq:sum_axiom}. Тогда
 \[
-	(\forall x,y\in\Z_{m})~x+y=x+'y,
+  (\forall x,y\in\Z_{m})~x+y=x+'y,
 \]
 то есть $+,+'$ {\it равны на} $\Z_{m}^{2}$.\index{равенство!отображений}
 
 {\it Доказательство:} Возьмём $x,y\in\Z_{m}$. Они не пустые, значит
 существуют $x'\in x,y'\in y$, тогда
 \[
-	x+y=[x']+[y']=[x'+y']=[x']+'[y']=x+'y\qed
+  x+y=[x']+[y']=[x'+y']=[x']+'[y']=x+'y\qed
 \]
 
 Осталось только определить функцию выбора. Это можно сделать либо через
 Аксиому Выбора, либо $f(\alpha):=\min(\alpha\cap\N)$, причём такая функция
 выбора будет обладать свойством
 \[
-	(\forall a\in\Z)~f([a])=R_{m}(a)
+  (\forall a\in\Z)~f([a])=R_{m}(a)
 \]
 
 Заметим, что из \eqref{eq:sum_axiom} следует существование и единственность\footnote{
-	Отображения $f,g:X\to Y$ называют равными и пишут $f=g$, если
-	\[
-		(\forall x\in X)~f(x)=g(x)
-	\]
+  Отображения $f,g:X\to Y$ называют равными и пишут $f=g$, если
+  \[
+    (\forall x\in X)~f(x)=g(x)
+  \]
 
-	То есть $(+)=(+')$, если
-	\[
-		(\forall x,y\in \Z_{m}^{2})~x+y=x+'y
-	\]}
+  То есть $(+)=(+')$, если
+  \[
+    (\forall x,y\in \Z_{m}^{2})~x+y=x+'y
+  \]}
 сложения, поэтому можно сказать, что эта формула является определением
 сложения на $\Z_{m}^{2}$.
 
@@ -816,115 +839,116 @@ $\lnot\eqref{eq:thm_ex_in_class}$, то есть
 \vspace{1em}
 {\it Упражнения:}
 \begin{enumerate}
-	\item{}Пусть $f:X\to T$. Доказать, что отношение\label{ex:fn_equiv}
-	\[
-		aRb\iff f(a)=f(b)
-	\]
-	является отношением эквивалентности на $X$.
+  \item{}Пусть $f:X\to T$. Доказать, что отношение\label{ex:fn_equiv}
+  \[
+    aRb\iff f(a)=f(b)
+  \]
+  является отношением эквивалентности на $X$.
 
-	\item{}Доказать, что следующие отношения являются отношениями эквивалентности:
-	\begin{enumerate}
-		\item{}$=$ на $X$, где $X$ --- произвольное.
-		\item{}Отношение параллельности прямых на множестве прямых.
-		\item{}Отношение подобия треугольников на множестве треугольников
-		на плоскости.
-		\item{}Отношение равенства длины на множестве отрезков.
-	\end{enumerate}
+  \item{}Доказать, что следующие отношения являются отношениями эквивалентности:
+  \begin{enumerate}
+    \item{}$=$ на $X$, где $X$ --- произвольное.
+    \item{}Отношение параллельности прямых на множестве прямых.
+    \item{}Отношение подобия треугольников на множестве треугольников
+    на плоскости.
+    \item{}Отношение равенства длины на множестве отрезков.
+  \end{enumerate}
 
-	\item{}Пусть $R$ --- отношение эквивалентности на множестве $X$.
-	Пусть $(\circ):X^{2}\to X$, причём выполняется
-	\[
-		(\forall x,x',y,y'\in X)~xRx'\land yRy'\implies (x\circ y)R(x'\circ y')
-	\]
+  \item{}Пусть $R$ --- отношение эквивалентности на множестве $X$.
+  Пусть $(\circ):X^{2}\to X$, причём выполняется
+  \[
+    (\forall x,x',y,y'\in X)~xRx'\land yRy'\implies (x\circ y)R(x'\circ y')
+  \]
 
-	Доказать, опираясь на Аксиому Выбора,
-	что существует единственное расширение $\circ$ на $X/R$, удовлетворяющее
-	\[
-		(\forall x,y\in X)~[x]\circ[y]=[x\circ y]
-	\]
+  Доказать, опираясь на Аксиому Выбора,
+  что существует единственное расширение $\circ$ на $X/R$, удовлетворяющее
+  \[
+    (\forall x,y\in X)~[x]\circ[y]=[x\circ y]
+  \]
 
-	\item{}*Пусть $X$ --- произвольное.
-	Определим отношение $\leq_{\mu}$ на $2^{X}$:
-	\[
-		\beta\leq_{\mu}\alpha\iff \exists f:(f:\alpha\to\beta)\land f(\alpha)=\beta
-	\]
-	Доказать, что отношение
-	\[
-		\alpha R\beta\iff (\alpha\leq_{\mu}\beta)\land (\beta\leq_{\mu}\alpha)
-	\]
-	является отношением эквивалентности на $2^{X}$.
+  \item{}*Пусть $X$ --- произвольное.
+  Определим отношение $\leq_{\mu}$ на $2^{X}$:
+  \[
+    \beta\leq_{\mu}\alpha\iff \exists f:(f:\alpha\to\beta)\land f(\alpha)=\beta
+  \]
+  Доказать, что отношение
+  \[
+    \alpha R\beta\iff (\alpha\leq_{\mu}\beta)\land (\beta\leq_{\mu}\alpha)
+  \]
+  является отношением эквивалентности на $2^{X}$.
 
-	\item{}*Пусть $\sigma(x):=x\cup\{x\}$. Будем говорить, что $M$
-	{\it индуктивно}\index{индуктивное множество}\index{множество!индуктивное}
-	и писать $I(M)$, если
-	\[
-		I(M)\equiv \eset\in M\land \forall x(x\in M\implies \sigma(x)\in M)
-	\]
-	Будем говорить, что $a$ {\it достижим}\index{достижимость}
-	\index{элемент!достижимый} и писать $S(a)$,
-	если он содержится во всех индуктивных множествах, то есть
-	\[
-		S(a)\equiv \forall M(I(M)\implies a\in M)
-	\]
+  \item{}*Пусть $\sigma(x):=x\cup\{x\}$ и $0:=\eset$. Будем говорить, что
+  множество $M$ {\it индуктивно} и писать $I(M)$, если
+  \index{индуктивное множество}\index{множество!индуктивное}
+  \[
+    I(M)\equiv 0\in M\land \forall x(x\in M\implies \sigma(x)\in M)
+  \]
+  Будем говорить, что $a$ {\it достижим}\index{достижимость}
+  \index{элемент!достижимый} и писать $S(a)$,
+  если он содержится во всех индуктивных множествах, то есть
+  \[
+    S(a)\equiv \forall M(I(M)\implies a\in M)
+  \]
 
-	Пусть $P$ --- произвольное индуктивное множество\footnote{
-		Аксиома Бесконечности:\index{Аксиома!Бесконечности}
-		\[
-			\exists M:I(M)
-		\]}.
-	Определим множество натуральных чисел с $0$ как
-	\[
-		\N_0:=\left\{a\in P\;\big|\; S(a)\right\}
-	\]
-	\begin{enumerate}
-		\item{}Пусть $P'$ --- другое индуктивное множество, которое может
-		отличаться от $P$ и $\N_0':=\left\{a\in P'\;\big|\; S(a)\right\}$.
-		Доказать $\N_0=\N_0'$.
-		\item{}Доказать, что $\N_0$ --- наименьшее индуктивное множество.
-		В этом случае достаточно доказать утверждение
-		\[
-			(\forall M)~I(M)\implies\N_0\subseteq M
-		\]
-		\item{}Доказать принцип математической индукции\index{индукция}
-		\footnote{Возьмём формулу $P(x)$,
-		для которой доказано
-		\[
-			P(0)\land (\forall n\in\N_0)~[P(n)\implies P(\sigma(n))]
-		\]
-		Тогда множество
-		\[
-			M:=\left\{n\in\N_0\;\big|\; P(n)\right\}
-		\]
-		удовлетворяет условию упражнения и $\N_0\subseteq M$,
-		тогда
-		\[
-			(\forall n\in\N_0)~P(n)
-		\]}:
-		\[
-			[0\in M\land (\forall n\in\N_0)~(n\in M\implies
-					\sigma(n)\in M)]\implies \N_0\subseteq M
-		\]
-		\item{}Пусть отображения $+,+':\N_0^{2}\to\N_0$ оба удовлетворяют
-		\begin{enumerate}
-			\item{}$(\forall a\in\N_0)~a+0=a$
-			\item{}$(\forall a,b\in\N_0)~a+\sigma(b)=\sigma(a+b)$
-		\end{enumerate}
-		Доказать, что они равны на $\N_0^{2}$. Подсказка:
-		использовать индукцию с формулой
-		\[
-			P(n)\equiv (\forall a\in\N_0)~a+n=a+'n
-		\]
-		\item{}Пусть отображения $\cdot,\cdot':\N_0^{2}\to\N_0$ оба удовлетворяют
-		\begin{enumerate}
-			\item{}$(\forall a\in\N_0)~a\cdot 0=0$
-			\item{}$(\forall a,b\in\N_0)~a\cdot\sigma(b)=a\cdot b+a$
-		\end{enumerate}
-		Доказать, что они равны на $\N_0^{2}$.
-	\end{enumerate}
+  Пусть $P$ --- произвольное индуктивное множество\footnote{
+    Аксиома Бесконечности:\index{Аксиома!Бесконечности}
+    \[
+      \exists M:I(M)
+    \]}.
+  Определим множество натуральных чисел с $0$ как
+  \[
+    \N_0:=\left\{a\in P\;\big|\; S(a)\right\}
+  \]
+  \begin{enumerate}
+    \item{}Пусть $P'$ --- другое индуктивное множество, которое может
+    отличаться от $P$ и $\N_0':=\left\{a\in P'\;\big|\; S(a)\right\}$.
+    Доказать $\N_0=\N_0'$.
+    \item{}Доказать, что $\N_0$ --- наименьшее индуктивное множество.
+    В этом случае достаточно доказать утверждение
+    \[
+      (\forall M)~I(M)\implies\N_0\subseteq M
+    \]
+    \item{}Доказать принцип математической индукции\footnote{Возьмём формулу $P(x)$,
+    для которой доказано
+    \[
+      P(0)\land (\forall n\in\N_0)~[P(n)\implies P(\sigma(n))]
+    \]
+    Тогда множество
+    \[
+      M:=\left\{n\in\N_0\;\big|\; P(n)\right\}
+    \]
+    удовлетворяет условию упражнения и $\N_0\subseteq M$,
+    тогда
+    \[
+      (\forall n\in\N_0)~P(n)
+    \]}:
+    \index{индукция}
+    \[
+      [0\in M\land (\forall n\in\N_0)~(n\in M\implies
+          \sigma(n)\in M)]\implies \N_0\subseteq M
+    \]
+    \item{}Пусть отображения $+,+':\N_0^{2}\to\N_0$ оба удовлетворяют
+    \begin{enumerate}
+      \item{}$(\forall a\in\N_0)~a+0=a$
+      \item{}$(\forall a,b\in\N_0)~a+\sigma(b)=\sigma(a+b)$
+    \end{enumerate}
+    Доказать, что они равны на $\N_0^{2}$. Подсказка:
+    использовать индукцию с формулой
+    \[
+      P(n)\equiv (\forall a\in\N_0)~a+n=a+'n
+    \]
+    \item{}Пусть отображения $\cdot,\cdot':\N_0^{2}\to\N_0$ оба удовлетворяют
+    \begin{enumerate}
+      \item{}$(\forall a\in\N_0)~a\cdot 0=0$
+      \item{}$(\forall a,b\in\N_0)~a\cdot\sigma(b)=a\cdot b+a$
+    \end{enumerate}
+    Доказать, что они равны на $\N_0^{2}$.
+  \end{enumerate}
 
-	\item{}Пусть $a\in S$ и $f:S\to S$. Дать определение множеству
-	\[
-		V=\{a,f(a),f(f(a)),f(f(f(a))),...\}
-	\]
-	В каких случаях оно бесконечно?
+  \item{}*Пусть $a\in S$ и $f:S\to S$. Дать определение множеству
+  \[
+    V=\{a,f(a),f(f(a)),f(f(f(a))),...\}
+  \]
+  Сколько в нём элементов, если $f(a)=a$? $f(f(a))=a$?
+  В каких случаях оно бесконечно?
 \end{enumerate}
