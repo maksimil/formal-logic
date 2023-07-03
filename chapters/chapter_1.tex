@@ -226,8 +226,8 @@ $\varphi\equiv a_1a_2...a_{n}$ означает, что за сокращени�
 \begin{enumerate}
   \item{}$\implies$ или $\iff$. Выражения вида ${A\implies B\implies C}$
   будем рассматривать по-другому.
-  \item{}Самый левый $\lor$.
-  \item{}Самый левый $\land$.
+  \item{}Самый правый $\lor$.
+  \item{}Самый правый $\land$.
   \item{}Самый левый $\lnot$.
 \end{enumerate}
 
@@ -312,7 +312,6 @@ $\varphi\equiv a_1a_2...a_{n}$ означает, что за сокращени�
                   & $q$ всякий раз, когда $p$                   \\\hline
     $p\iff q$     & $p$ эквивалентно $q$                        \\
                   & $p$ равносильно $q$                         \\
-                  & $p$ ттк $q$                                 \\
                   & $p\implies q$ и $q\implies p$               \\\hline
     $\top$        & истина                                      \\\hline
     $\bot$        & ложь                                        \\
@@ -614,8 +613,8 @@ $a\zeta b\equiv \zeta(a,b)$. С инфиксной записью предика
   \begin{multicols}{2}
     \begin{enumerate}
       \item{}$\implies$ или $\iff$.
-      \item{}Самый левый $\lor$.
-      \item{}Самый левый $\land$.
+      \item{}Самый правый $\lor$.
+      \item{}Самый правый $\land$.
       \item{}Самый левый $\lnot$ или $K\gamma$.
     \end{enumerate}
   \end{multicols}
@@ -628,15 +627,15 @@ $a\zeta b\equiv \zeta(a,b)$. С инфиксной записью предика
     \node (mm) at (0,-1) {$\exists b:x\prec b\lor b\prec x
         \lor (\forall a)~a\prec b$};
     \node (mmm) at (0,-2) {$x\prec b\lor b\prec x\lor (\forall a)~a\prec b$};
-    \node (mmml) at (-1.5,-3) {$x\prec b$};
-    \node (mmmr) at (0.75,-3) {$b\prec x\lor (\forall a)~a\prec b$};
-    \node (mmmrl) at (-0.25,-4) {$b\prec x$};
-    \node (mmmrr) at (1.75,-4) {$(\forall a)~a\prec b$};
-    \node (mmmrrm) at (1.75,-5) {$a\prec b$};
+    \node (mmmr) at (1,-3) {$(\forall a)~a\prec b$};
+    \node (mmmrm) at (1,-4) {$a\prec b$};
+    \node (mmml) at (-1.25,-3) {$x\prec b\lor b\prec x$};
+    \node (mmmll) at (-2,-4) {$x\prec b$};
+    \node (mmmlr) at (-0.5,-4) {$b\prec x$};
 
-    \draw (m) -- (mm) -- (mmm) -- (mmml);
-    \draw (mmm) -- (mmmr) -- (mmmrl);
-    \draw (mmmr) -- (mmmrr) -- (mmmrrm);
+    \draw (m) -- (mm) -- (mmm) -- (mmmr) -- (mmmrm);
+    \draw (mmm) -- (mmml) -- (mmmll);
+    \draw (mmml) -- (mmmlr);
   \end{tikzpicture}
 
   \caption{Дерево более сложной формулы.}\label{fig:comp_tree}
@@ -762,7 +761,7 @@ $r$ существует такое натуральное $n$, что $n>r$''.
 можем определить сокращения
 \[
   \exists! x:P(x)\equiv[\exists x:P(x)]\land
-  [\forall x\forall y(P(x)\land P(y)\implies x=y)]
+  [(\forall x,y)~P(x)\land P(y)\implies x=y]
 \]
 \[
   \exists! x\prec a:P(x)\equiv \exists! x:x\prec a\land P(x),
@@ -800,6 +799,6 @@ $r$ существует такое натуральное $n$, что $n>r$''.
 
   \item{}Обосновать условие единственности:
   \[
-    \forall x\forall y(P(x)\land P(y)\implies x=y)
+    (\forall x,y)~P(x)\land P(y)\implies x=y
   \]
 \end{enumerate}
