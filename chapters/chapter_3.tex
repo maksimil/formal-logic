@@ -139,11 +139,13 @@ $(\forall \vec{a},\vec{b})~
   Записать необходимое и достаточное условие $x\in C$.
 
   \item{}Пусть $P_{A}(x), P_{B}(x),P_{C}(x)$ --- условия множеств
-  $A,B,C$ соответственно. Выразить через них формулы
+  $A,B,C$ соответственно. Выразить\footnote{Например,
   \[
-    A\subseteq B\qquad A=B\qquad
-    C=A\cap B\qquad C=A\cup B\qquad
-    C\cap A=C\cap B
+    A\subseteq B\iff
+    [(\forall x)~P_{A}(x)\implies P_{B}(x)]
+  \]} через них формулы
+  \[
+    A=B\qquad C=A\cap B\qquad C=A\cup B\qquad C\cap A=C\cap B
   \]
 
   \item{}Доказать теоремы
@@ -251,7 +253,7 @@ $\eset$ называют {\it пустым множеством}.
 \[
   (\forall z)~[\exists x_1,...,x_{n}:z=(x_1,...,x_{n})]\implies \pi_{k}^{n}(z)=x_{k}
 \]
-для каждых $n\geq k\geq 1$. Например, для $n=3,k=2$ аксиома
+для каждых $n\geq k\geq 1$. Так, для $\pi_{2}^{3}$ аксиома
 будет выглядеть как
 \[
   (\forall z)~[\exists x_1,x_2,x_3:z=(x_1,x_2,x_3)]\implies \pi_2^{3}(z)=x_2
