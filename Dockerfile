@@ -17,6 +17,8 @@ RUN tlmgr install \
 	fancyhdr datetime fmtcount \
 	pgf imakeidx xindy
 
+RUN tlmgr install soul
+
 ENV PATH=/root/.TinyTeX/bin/x86_64-linux:$PATH
 
 # getting source code
